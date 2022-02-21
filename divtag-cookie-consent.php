@@ -93,6 +93,14 @@ class DivtagCookieConsent {
     );
 
     add_settings_field(
+			'knoppen_kleur_12', // id
+			'Knoppen kleur', // title
+			array( $this, 'knoppen_kleur_12_callback' ), // callback
+			'divtag-cookie-consent-admin', // page
+			'divtag_cookie_consent_setting_section' // section
+		);
+
+    add_settings_field(
       'forceer_consent_0', // id
       'Forceer consent', // title
       array( $this, 'forceer_consent_0_callback' ), // callback
@@ -172,6 +180,14 @@ class DivtagCookieConsent {
 			'divtag_cookie_consent_setting_section' // section
 		);
 
+    add_settings_field(
+			'transitie_11', // id
+			'Transitie', // title
+			array( $this, 'transitie_11_callback' ), // callback
+			'divtag-cookie-consent-admin', // page
+			'divtag_cookie_consent_setting_section' // section
+		);
+
 		add_settings_field(
 			'draai_knoppen_om_10', // id
 			'Draai knoppen om', // title
@@ -183,6 +199,10 @@ class DivtagCookieConsent {
 
   public function divtag_cookie_consent_sanitize($input) {
     $sanitary_values = array();
+    if ( isset( $input['knoppen_kleur_12'] ) ) {
+      $sanitary_values['knoppen_kleur_12'] = sanitize_text_field( $input['knoppen_kleur_12'] );
+    }
+
     if ( isset( $input['forceer_consent_0'] ) ) {
       $sanitary_values['forceer_consent_0'] = $input['forceer_consent_0'];
     }
@@ -223,6 +243,10 @@ class DivtagCookieConsent {
 			$sanitary_values['positie_horizontaal_9'] = $input['positie_horizontaal_9'];
 		}
 
+    if ( isset( $input['transitie_11'] ) ) {
+			$sanitary_values['transitie_11'] = $input['transitie_11'];
+		}
+
 		if ( isset( $input['draai_knoppen_om_10'] ) ) {
 			$sanitary_values['draai_knoppen_om_10'] = $input['draai_knoppen_om_10'];
 		}
@@ -232,6 +256,13 @@ class DivtagCookieConsent {
 
   public function divtag_cookie_consent_section_info() {
     
+  }
+
+  public function knoppen_kleur_12_callback() {
+    printf(
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur_12]" id="knoppen_kleur_12" value="%s"><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
+      isset( $this->divtag_cookie_consent_options['knoppen_kleur_12'] ) ? esc_attr( $this->divtag_cookie_consent_options['knoppen_kleur_12']) : ''
+    );
   }
 
   public function forceer_consent_0_callback() {
@@ -316,6 +347,15 @@ class DivtagCookieConsent {
 		</select> <?php
 	}
 
+  public function transitie_11_callback() {
+		?> <select name="divtag_cookie_consent_option_name[transitie_11]" id="transitie_11">
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie_11'] ) && $this->divtag_cookie_consent_options['transitie_11'] === 'slide') ? 'selected' : '' ; ?>
+			<option value="slide" <?php echo $selected; ?>> Slide</option>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie_11'] ) && $this->divtag_cookie_consent_options['transitie_11'] === 'zoom') ? 'selected' : '' ; ?>
+			<option value="zoom" <?php echo $selected; ?>> Zoom</option>
+		</select> <?php
+	}
+
 	public function draai_knoppen_om_10_callback() {
 		printf(
 			'<input type="checkbox" name="divtag_cookie_consent_option_name[draai_knoppen_om_10]" id="draai_knoppen_om_10" value="draai_knoppen_om_10" %s> <label for="draai_knoppen_om_10">Draai de acceptatie en weiger knoppen om</label>',
@@ -341,6 +381,8 @@ class DivtagCookieConsent {
 * $positie_verticaal_8 = $divtag_cookie_consent_options['positie_verticaal_8']; // Positie verticaal
 * $positie_horizontaal_9 = $divtag_cookie_consent_options['positie_horizontaal_9']; // Positie horizontaal
 * $draai_knoppen_om_10 = $divtag_cookie_consent_options['draai_knoppen_om_10']; // Draai knoppen om
+* $transitie_11 = $divtag_cookie_consent_options['transitie_11']; // Transitie
+* $knoppen_kleur_12 = $divtag_cookie_consent_options['knoppen_kleur_12']; // Knoppen kleur
 */
 
 

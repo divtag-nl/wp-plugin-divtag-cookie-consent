@@ -12,31 +12,46 @@ const options = {
                     : 'We gebruiken cookies!',
   description_nl: getOptions.uitleg_nl_3
                     ? getOptions.uitleg_nl_3
-                    : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen welke cookies\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
+                    : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
   title_en:       getOptions.titel_en_4
                     ? getOptions.titel_nl_4 
                     : 'We use cookies!',
   description_en: getOptions.uitleg_en_5
                     ? getOptions.uitleg_nl_5
-                    : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.'
+                    : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
+  gui: {
+    layout:               getOptions.layout_7,
+    position_vertical:    getOptions.positie_verticaal_8,
+    position_horizontal:  getOptions.positie_horizontaal_9,
+    transition:           getOptions.transitie_11,
+    swap_buttons:         getOptions.draai_knoppen_om_10
+                            ? true
+                            : false, 
+  },
 }
 
+// If a contact url is set, override the admin email
 let contactUrl = 'mailto:' + cookieConsentSettings.adminEmail;
-
 if (getOptions.contact_url_6) {
   contactUrl = getOptions.contact_url_6;
 }
 
-// TODO delete line below
-console.log(getOptions)
-
+// If a button (theme) color is set, override the existing default color
+if (getOptions.knoppen_kleur_12) {
+  document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur_12);
+}
 
 // If settings dark mode is true, set dark theme
 options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
 
-// run plugin with your configuration
+let language = document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en'
+
+// TODO delete line below
+console.log(getOptions)
+
+// Run plugin with configuration
 cc.run({
-    current_lang: document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en',
+    current_lang: language,
     autoclear_cookies: true,                   // default: false
     page_scripts: true,                        // default: false
 
@@ -70,10 +85,10 @@ cc.run({
 
     gui_options: {
       consent_modal: {
-        layout: 'cloud',               // box/cloud/bar
-        position: 'bottom right',      // bottom/middle/top + left/right/center
-        transition: 'slide',           // zoom/slide
-        swap_buttons: false            // enable to invert buttons
+        layout: options.gui.layout,
+        position: options.gui.position_vertical + ' ' + options.gui.position_horizontal,
+        transition: options.gui.transition,
+        swap_buttons: options.gui.swap_buttons,
       }
     },
 
@@ -81,7 +96,7 @@ cc.run({
         'nl': {
             consent_modal: {
                 title: options.title_nl,
-                description: options.description_nl + ' <button type="button" data-cc="c-settings" class="cc-link">Laat mij kiezen welke cookies</button>',
+                description: options.description_nl + ' <button type="button" data-cc="c-settings" class="cc-link">Laat mij kiezen</button>',
                 primary_btn: {
                     text: 'Accepteer alles',
                     role: 'accept_all', // 'accept_selected' or 'accept_all'
