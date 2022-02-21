@@ -7,6 +7,9 @@ https://github.com/orestbida/cookieconsent
 Wanneer de plugin is geïnstalleerd en geactiveerd is, zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te vervangen.
 
 ### Blokkeren van externe scripts
+Huidige categorieën die te blokkeren zijn:
+- `marketing`
+
 Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden als deze instelling is gekozen het volgende gebeuren:
 
 Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag het type `text/plain` krijgen en voeg `data-cookiecategory="marketing"` toe:

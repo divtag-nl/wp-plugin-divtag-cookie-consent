@@ -41,13 +41,12 @@ if (getOptions.knoppen_kleur_12) {
   document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur_12);
 }
 
-// If settings dark mode is true, set dark theme
+// If dark mode setting is checked, set dark theme
 options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
 
-let language = document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en'
+// Set language by looking at the html attribute 'lang'
+const language = document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en'
 
-// TODO delete line below
-console.log(getOptions)
 
 // Run plugin with configuration
 cc.run({
