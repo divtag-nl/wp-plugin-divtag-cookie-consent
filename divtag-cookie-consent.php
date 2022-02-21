@@ -8,6 +8,15 @@
 * Author URI: https://divtag.nl/
 **/
 
+require('vendor/autoload.php');
+
+$repo = 'divtag_nl/wp-plugin-divtag-cookie-consent'; // name of your repository. This is either "<user>/<repo>" or "<team>/<repo>".
+$bitbucket_username = 'robinvoormpo';                // your personal BitBucket username
+$bitbucket_app_pass = 'J5x5ZguHE4sWyc4qKay4';        // the generated app password with read access
+
+new \Maneuver\BitbucketWpUpdater\PluginUpdater(__FILE__, $repo, $bitbucket_username, $bitbucket_app_pass);
+
+
 add_action( 'wp_head', 'header_scripts' );
 function header_scripts(){
   ?>
