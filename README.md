@@ -1,0 +1,2 @@
+# Divtag Cookie Consent
+
