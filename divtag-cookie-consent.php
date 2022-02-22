@@ -3,22 +3,26 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://www.bitbucket.com/
 * Description: Cookie Consent by Divtag
-* Version: 1.0.3
-* Author: Divtag
+* Version: 1.0.4
+* Author: Robin - Divtag
 * Author URI: https://divtag.nl/
 **/
 
 /**
- * Bitbucket WP Update checker
+ * Bitbucket WP Plugin Update checker
  */
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/Blastius/divtag-cookies-consent/',
+	__FILE__,
+	'divtag-cookies-consent'
+);
 
-require('vendor/autoload.php');
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
 
-$repo = 'divtag_nl/wp-plugin-divtag-cookie-consent'; // Name of your repository. This is either "<user>/<repo>" or "<team>/<repo>".
-$bitbucket_username = 'robinvoormpo';                // Your personal BitBucket username
-$bitbucket_app_pass = 'J5x5ZguHE4sWyc4qKay4';        // The generated app password with read access
-
-new \Maneuver\BitbucketWpUpdater\PluginUpdater(__FILE__, $repo, $bitbucket_username, $bitbucket_app_pass);
+//Optional: If you're using a private repository, specify the access token like this:
+$myUpdateChecker->setAuthentication('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');
 
 
 /**
