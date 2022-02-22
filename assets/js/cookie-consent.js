@@ -8,20 +8,20 @@ const options = {
   dark_mode:      getOptions.donkere_modus_1,
   title_nl:       getOptions.titel_nl_2
                       ? getOptions.titel_nl_2 
-                      : 'We gebruiken cookies!',
+                      : 'We gebruiken cookies',
   description_nl: getOptions.uitleg_nl_3
                       ? getOptions.uitleg_nl_3
                       : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
   title_en:       getOptions.titel_en_4
                       ? getOptions.titel_nl_4 
-                      : 'We use cookies!',
+                      : 'We use cookies',
   description_en: getOptions.uitleg_en_5
                       ? getOptions.uitleg_nl_5
                       : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
-      layout:               getOptions.layout_7,
-      position_vertical:    getOptions.positie_verticaal_8,
-      position_horizontal:  getOptions.positie_horizontaal_9,
+      layout:               getOptions.layout_7 || 'cloud',
+      position_vertical:    getOptions.positie_verticaal_8 || 'bottom',
+      position_horizontal:  getOptions.positie_horizontaal_9 || 'right',
       transition:           getOptions.transitie_11,
       swap_buttons:         getOptions.draai_knoppen_om_10
                                 ? true
