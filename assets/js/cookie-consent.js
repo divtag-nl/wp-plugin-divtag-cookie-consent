@@ -1,67 +1,66 @@
-// obtain plugin
 const cc = initCookieConsent();
 
 const getOptions = cookieConsentSettings.options;
 const options = {
   force_consent:  getOptions.forceer_consent_0 
-                    ? true 
-                    : false,
+                      ? true 
+                      : false,
   dark_mode:      getOptions.donkere_modus_1,
   title_nl:       getOptions.titel_nl_2
-                    ? getOptions.titel_nl_2 
-                    : 'We gebruiken cookies!',
+                      ? getOptions.titel_nl_2 
+                      : 'We gebruiken cookies!',
   description_nl: getOptions.uitleg_nl_3
-                    ? getOptions.uitleg_nl_3
-                    : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
+                      ? getOptions.uitleg_nl_3
+                      : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
   title_en:       getOptions.titel_en_4
-                    ? getOptions.titel_nl_4 
-                    : 'We use cookies!',
+                      ? getOptions.titel_nl_4 
+                      : 'We use cookies!',
   description_en: getOptions.uitleg_en_5
-                    ? getOptions.uitleg_nl_5
-                    : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
+                      ? getOptions.uitleg_nl_5
+                      : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
-    layout:               getOptions.layout_7,
-    position_vertical:    getOptions.positie_verticaal_8,
-    position_horizontal:  getOptions.positie_horizontaal_9,
-    transition:           getOptions.transitie_11,
-    swap_buttons:         getOptions.draai_knoppen_om_10
-                            ? true
-                            : false, 
+      layout:               getOptions.layout_7,
+      position_vertical:    getOptions.positie_verticaal_8,
+      position_horizontal:  getOptions.positie_horizontaal_9,
+      transition:           getOptions.transitie_11,
+      swap_buttons:         getOptions.draai_knoppen_om_10
+                                ? true
+                                : false, 
   },
 }
 
 // If a contact url is set, override the admin email
 let contactUrl = 'mailto:' + cookieConsentSettings.adminEmail;
 if (getOptions.contact_url_6) {
-  contactUrl = getOptions.contact_url_6;
+    contactUrl = getOptions.contact_url_6;
 }
 
 // If a button (theme) color is set, override the existing default color
 if (getOptions.knoppen_kleur_12) {
-  document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur_12);
+    document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur_12);
 }
 
 // If dark mode setting is checked, set dark theme
 options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
 
 // Set language by looking at the html attribute 'lang'
-const language = document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en'
+const current_language = document.getElementsByTagName('html')[0].getAttribute('lang') === 'nl' ? 'nl' : 'en'
 
 
-// Run plugin with configuration
+// Run cookie consent plugin with configuration
 cc.run({
-    current_lang: language,
+    current_lang: current_language,
     autoclear_cookies: true,
     page_scripts: true,
     force_consent: options.force_consent,
 
     gui_options: {
-      consent_modal: {
-        layout: options.gui.layout,
-        position: options.gui.position_vertical + ' ' + options.gui.position_horizontal,
-        transition: options.gui.transition,
-        swap_buttons: options.gui.swap_buttons,
-      }
+        consent_modal: {
+            layout: options.gui.layout,
+            position: `${options.gui.position_vertical} ${options.gui.position_horizontal}`,
+            transition: options.gui.transition,
+            swap_buttons: options.gui.swap_buttons,
+        }
     },
 
     languages: {

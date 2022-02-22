@@ -1,9 +1,12 @@
 # Divtag Cookie Consent
 
 ## Externe plugins
-https://github.com/orestbida/cookieconsent
+[orestbida/cookieconsent - v2.8.0](https://github.com/orestbida/cookieconsent/releases/tag/v2.8.0)
 
 ## Development
+De plugin in **wp-content/plugins** clonen, vervolgens zijn alle bestanden naar wens aan te passen. Als een nieuwe release klaar is, update het versienummer in **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer als in eerder benoemde bestanden is toegepast.
+
+### Optie pagina velden
 Bij het toevoegen van velden voor de instellingen, is https://jeremyhixon.com/tool/wordpress-option-page-generator/ een handige generator.
 
 ## Gebruik
