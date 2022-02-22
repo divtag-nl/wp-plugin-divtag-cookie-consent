@@ -1,10 +1,10 @@
 <?php
 /**
 * Plugin Name: Divtag Cookie Consent
-* Plugin URI: https://www.bitbucket.com/
+* Plugin URI: https://github.com/Blastius/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.0.5
-* Author: Robin - Divtag
+* Version: 1.0.6
+* Author: Divtag
 * Author URI: https://divtag.nl/
 **/
 
@@ -13,9 +13,9 @@
  */
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/Blastius/divtag-cookies-consent/',
+	'https://github.com/Blastius/wp-plugin-divtag-cookie-consent/',
 	__FILE__,
-	'divtag-cookies-consent'
+	'wp-plugin-divtag-cookie-consent'
 );
 
 //Set the branch that contains the stable release.
