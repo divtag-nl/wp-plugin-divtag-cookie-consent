@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/Blastius/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.1.0
+* Version: 1.1.1
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -20,9 +20,6 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 //Set the branch that contains the stable release.
 $myUpdateChecker->setBranch('master');
-
-//Optional: If you're using a private repository, specify the access token like this:
-$myUpdateChecker->setAuthentication('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');
 
 
 /**
