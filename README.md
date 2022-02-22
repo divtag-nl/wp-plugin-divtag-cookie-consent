@@ -6,11 +6,13 @@
 ## Development
 De plugin in **wp-content/plugins** clonen, vervolgens zijn alle bestanden naar wens aan te passen. Als een nieuwe release klaar is, update het versienummer in **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer als in eerder benoemde bestanden is toegepast.
 
+[Plugin update checker](https://github.com/YahnisElsts/plugin-update-checker) wordt gebruikt om te kijken of er updates zijn van de plugin.
+
 ### Optie pagina velden
 Bij het toevoegen van velden voor de instellingen, is https://jeremyhixon.com/tool/wordpress-option-page-generator/ een handige generator.
 
 ## Gebruik
-Wanneer de plugin is geïnstalleerd en geactiveerd is, zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te vervangen.
+Wanneer de plugin is geïnstalleerd en geactiveerd is, zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te overschrijven.
 
 ### Blokkeren van externe scripts
 Huidige categorieën die te blokkeren zijn:

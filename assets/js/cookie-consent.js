@@ -2,28 +2,28 @@ const cc = initCookieConsent();
 
 const getOptions = cookieConsentSettings.options;
 const options = {
-  force_consent:  getOptions.forceer_consent_0 
+  force_consent:  getOptions.forceer_consent
                       ? true 
                       : false,
-  dark_mode:      getOptions.donkere_modus_1,
-  title_nl:       getOptions.titel_nl_2
-                      ? getOptions.titel_nl_2 
+  dark_mode:      getOptions.donkere_modus,
+  title_nl:       getOptions.titel_nl
+                      ? getOptions.titel_nl
                       : 'We gebruiken cookies!',
-  description_nl: getOptions.uitleg_nl_3
-                      ? getOptions.uitleg_nl_3
+  description_nl: getOptions.uitleg_nl
+                      ? getOptions.uitleg_nl
                       : 'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
-  title_en:       getOptions.titel_en_4
-                      ? getOptions.titel_nl_4 
+  title_en:       getOptions.titel_en
+                      ? getOptions.titel_nl
                       : 'We use cookies!',
-  description_en: getOptions.uitleg_en_5
-                      ? getOptions.uitleg_nl_5
+  description_en: getOptions.uitleg_en
+                      ? getOptions.uitleg_nl
                       : 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
-      layout:               getOptions.layout_7 || 'cloud',
-      position_vertical:    getOptions.positie_verticaal_8 || 'bottom',
-      position_horizontal:  getOptions.positie_horizontaal_9 || 'right',
-      transition:           getOptions.transitie_11,
-      swap_buttons:         getOptions.draai_knoppen_om_10
+      layout:               getOptions.layout || 'cloud',
+      position_vertical:    getOptions.positie_verticaal || 'bottom',
+      position_horizontal:  getOptions.positie_horizontaal || 'right',
+      transition:           getOptions.transitie,
+      swap_buttons:         getOptions.draai_knoppen_om
                                 ? true
                                 : false, 
   },
@@ -31,13 +31,13 @@ const options = {
 
 // If a contact url is set, override the admin email
 let contactUrl = 'mailto:' + cookieConsentSettings.adminEmail;
-if (getOptions.contact_url_6) {
-    contactUrl = getOptions.contact_url_6;
+if (getOptions.contact_url) {
+    contactUrl = getOptions.contact_url;
 }
 
 // If a button (theme) color is set, override the existing default color
-if (getOptions.knoppen_kleur_12) {
-    document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur_12);
+if (getOptions.knoppen_kleur) {
+    document.documentElement.style.setProperty('--cc-btn-primary-bg', getOptions.knoppen_kleur);
 }
 
 // If dark mode setting is checked, set dark theme

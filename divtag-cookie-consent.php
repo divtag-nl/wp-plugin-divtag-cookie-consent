@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/Blastius/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.0.6
+* Version: 1.1.0
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -119,105 +119,105 @@ class DivtagCookieConsent {
     );
 
     add_settings_field(
-			'knoppen_kleur_12', // id
+			'knoppen_kleur', // id
 			'Knoppen kleur', // title
-			array( $this, 'knoppen_kleur_12_callback' ), // callback
+			array( $this, 'knoppen_kleur_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
 
     add_settings_field(
-      'forceer_consent_0', // id
+      'forceer_consent', // id
       'Forceer consent', // title
-      array( $this, 'forceer_consent_0_callback' ), // callback
+      array( $this, 'forceer_consent_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'donkere_modus_1', // id
+      'donkere_modus', // id
       'Donkere modus', // title
-      array( $this, 'donkere_modus_1_callback' ), // callback
+      array( $this, 'donkere_modus_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'titel_nl_2', // id
+      'titel_nl', // id
       'Titel - NL', // title
-      array( $this, 'titel_nl_2_callback' ), // callback
+      array( $this, 'titel_nl_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'uitleg_nl_3', // id
+      'uitleg_nl', // id
       'Uitleg - NL', // title
-      array( $this, 'uitleg_nl_3_callback' ), // callback
+      array( $this, 'uitleg_nl_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'titel_en_4', // id
+      'titel_en', // id
       'Titel - EN', // title
-      array( $this, 'titel_en_4_callback' ), // callback
+      array( $this, 'titel_en_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'uitleg_en_5', // id
+      'uitleg_en', // id
       'Uitleg - EN', // title
-      array( $this, 'uitleg_en_5_callback' ), // callback
+      array( $this, 'uitleg_en_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-      'contact_url_6', // id
+      'contact_url', // id
       'Contact URL', // title
-      array( $this, 'contact_url_6_callback' ), // callback
+      array( $this, 'contact_url_callback' ), // callback
       'divtag-cookie-consent-admin', // page
       'divtag_cookie_consent_setting_section' // section
     );
 
     add_settings_field(
-			'layout_7', // id
+			'layout', // id
 			'Layout', // title
-			array( $this, 'layout_7_callback' ), // callback
+			array( $this, 'layout_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
 
 		add_settings_field(
-			'positie_verticaal_8', // id
+			'positie_verticaal', // id
 			'Positie verticaal', // title
-			array( $this, 'positie_verticaal_8_callback' ), // callback
+			array( $this, 'positie_verticaal_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
 
 		add_settings_field(
-			'positie_horizontaal_9', // id
+			'positie_horizontaal', // id
 			'Positie horizontaal', // title
-			array( $this, 'positie_horizontaal_9_callback' ), // callback
+			array( $this, 'positie_horizontaal_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
 
     add_settings_field(
-			'transitie_11', // id
+			'transitie', // id
 			'Transitie', // title
-			array( $this, 'transitie_11_callback' ), // callback
+			array( $this, 'transitie_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
 
 		add_settings_field(
-			'draai_knoppen_om_10', // id
+			'draai_knoppen_om', // id
 			'Draai knoppen om', // title
-			array( $this, 'draai_knoppen_om_10_callback' ), // callback
+			array( $this, 'draai_knoppen_om_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_setting_section' // section
 		);
@@ -225,56 +225,56 @@ class DivtagCookieConsent {
 
   public function divtag_cookie_consent_sanitize($input) {
     $sanitary_values = array();
-    if ( isset( $input['knoppen_kleur_12'] ) ) {
-      $sanitary_values['knoppen_kleur_12'] = sanitize_text_field( $input['knoppen_kleur_12'] );
+    if ( isset( $input['knoppen_kleur'] ) ) {
+      $sanitary_values['knoppen_kleur'] = sanitize_text_field( $input['knoppen_kleur'] );
     }
 
-    if ( isset( $input['forceer_consent_0'] ) ) {
-      $sanitary_values['forceer_consent_0'] = $input['forceer_consent_0'];
+    if ( isset( $input['forceer_consent'] ) ) {
+      $sanitary_values['forceer_consent'] = $input['forceer_consent'];
     }
 
-    if ( isset( $input['donkere_modus_1'] ) ) {
-      $sanitary_values['donkere_modus_1'] = $input['donkere_modus_1'];
+    if ( isset( $input['donkere_modus'] ) ) {
+      $sanitary_values['donkere_modus'] = $input['donkere_modus'];
     }
 
-    if ( isset( $input['titel_nl_2'] ) ) {
-      $sanitary_values['titel_nl_2'] = sanitize_text_field( $input['titel_nl_2'] );
+    if ( isset( $input['titel_nl'] ) ) {
+      $sanitary_values['titel_nl'] = sanitize_text_field( $input['titel_nl'] );
     }
 
-    if ( isset( $input['uitleg_nl_3'] ) ) {
-      $sanitary_values['uitleg_nl_3'] = esc_textarea( $input['uitleg_nl_3'] );
+    if ( isset( $input['uitleg_nl'] ) ) {
+      $sanitary_values['uitleg_nl'] = esc_textarea( $input['uitleg_nl'] );
     }
 
-    if ( isset( $input['titel_en_4'] ) ) {
-      $sanitary_values['titel_en_4'] = sanitize_text_field( $input['titel_en_4'] );
+    if ( isset( $input['titel_en'] ) ) {
+      $sanitary_values['titel_en'] = sanitize_text_field( $input['titel_en'] );
     }
 
-    if ( isset( $input['uitleg_en_5'] ) ) {
-      $sanitary_values['uitleg_en_5'] = esc_textarea( $input['uitleg_en_5'] );
+    if ( isset( $input['uitleg_en'] ) ) {
+      $sanitary_values['uitleg_en'] = esc_textarea( $input['uitleg_en'] );
     }
 
-    if ( isset( $input['contact_url_6'] ) ) {
-      $sanitary_values['contact_url_6'] = sanitize_text_field( $input['contact_url_6'] );
+    if ( isset( $input['contact_url'] ) ) {
+      $sanitary_values['contact_url'] = sanitize_text_field( $input['contact_url'] );
     }
 
-    if ( isset( $input['layout_7'] ) ) {
-			$sanitary_values['layout_7'] = $input['layout_7'];
+    if ( isset( $input['layout'] ) ) {
+			$sanitary_values['layout'] = $input['layout'];
 		}
 
-		if ( isset( $input['positie_verticaal_8'] ) ) {
-			$sanitary_values['positie_verticaal_8'] = $input['positie_verticaal_8'];
+		if ( isset( $input['positie_verticaal'] ) ) {
+			$sanitary_values['positie_verticaal'] = $input['positie_verticaal'];
 		}
 
-		if ( isset( $input['positie_horizontaal_9'] ) ) {
-			$sanitary_values['positie_horizontaal_9'] = $input['positie_horizontaal_9'];
+		if ( isset( $input['positie_horizontaal'] ) ) {
+			$sanitary_values['positie_horizontaal'] = $input['positie_horizontaal'];
 		}
 
-    if ( isset( $input['transitie_11'] ) ) {
-			$sanitary_values['transitie_11'] = $input['transitie_11'];
+    if ( isset( $input['transitie'] ) ) {
+			$sanitary_values['transitie'] = $input['transitie'];
 		}
 
-		if ( isset( $input['draai_knoppen_om_10'] ) ) {
-			$sanitary_values['draai_knoppen_om_10'] = $input['draai_knoppen_om_10'];
+		if ( isset( $input['draai_knoppen_om'] ) ) {
+			$sanitary_values['draai_knoppen_om'] = $input['draai_knoppen_om'];
 		}
 
     return $sanitary_values;
@@ -284,108 +284,108 @@ class DivtagCookieConsent {
     
   }
 
-  public function knoppen_kleur_12_callback() {
+  public function knoppen_kleur_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur_12]" id="knoppen_kleur_12" value="%s"><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
-      isset( $this->divtag_cookie_consent_options['knoppen_kleur_12'] ) ? esc_attr( $this->divtag_cookie_consent_options['knoppen_kleur_12']) : ''
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur]" id="knoppen_kleur" value="%s"><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
+      isset( $this->divtag_cookie_consent_options['knoppen_kleur'] ) ? esc_attr( $this->divtag_cookie_consent_options['knoppen_kleur']) : ''
     );
   }
 
-  public function forceer_consent_0_callback() {
+  public function forceer_consent_callback() {
     printf(
-      '<input type="checkbox" name="divtag_cookie_consent_option_name[forceer_consent_0]" id="forceer_consent_0" value="forceer_consent_0" %s> <label for="forceer_consent_0">Forceer de gebruiker de cookies te accepteren of weigeren</label>',
-      ( isset( $this->divtag_cookie_consent_options['forceer_consent_0'] ) && $this->divtag_cookie_consent_options['forceer_consent_0'] === 'forceer_consent_0' ) ? 'checked' : ''
+      '<input type="checkbox" name="divtag_cookie_consent_option_name[forceer_consent]" id="forceer_consent" value="forceer_consent" %s> <label for="forceer_consent">Forceer de gebruiker de cookies te accepteren of weigeren</label>',
+      ( isset( $this->divtag_cookie_consent_options['forceer_consent'] ) && $this->divtag_cookie_consent_options['forceer_consent'] === 'forceer_consent' ) ? 'checked' : ''
     );
   }
 
-  public function donkere_modus_1_callback() {
+  public function donkere_modus_callback() {
     printf(
-      '<input type="checkbox" name="divtag_cookie_consent_option_name[donkere_modus_1]" id="donkere_modus_1" value="donkere_modus_1" %s> <label for="donkere_modus_1">Weergeef de Cookie Consent in een donker thema</label>',
-      ( isset( $this->divtag_cookie_consent_options['donkere_modus_1'] ) && $this->divtag_cookie_consent_options['donkere_modus_1'] === 'donkere_modus_1' ) ? 'checked' : ''
+      '<input type="checkbox" name="divtag_cookie_consent_option_name[donkere_modus]" id="donkere_modus" value="donkere_modus" %s> <label for="donkere_modus">Weergeef de Cookie Consent in een donker thema</label>',
+      ( isset( $this->divtag_cookie_consent_options['donkere_modus'] ) && $this->divtag_cookie_consent_options['donkere_modus'] === 'donkere_modus' ) ? 'checked' : ''
     );
   }
 
-  public function titel_nl_2_callback() {
+  public function titel_nl_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[titel_nl_2]" id="titel_nl_2" value="%s">',
-      isset( $this->divtag_cookie_consent_options['titel_nl_2'] ) ? esc_attr( $this->divtag_cookie_consent_options['titel_nl_2']) : ''
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[titel_nl]" id="titel_nl" value="%s">',
+      isset( $this->divtag_cookie_consent_options['titel_nl'] ) ? esc_attr( $this->divtag_cookie_consent_options['titel_nl']) : ''
     );
   }
 
-  public function uitleg_nl_3_callback() {
+  public function uitleg_nl_callback() {
     printf(
-      '<textarea class="large-text" rows="5" name="divtag_cookie_consent_option_name[uitleg_nl_3]" id="uitleg_nl_3">%s</textarea>',
-      isset( $this->divtag_cookie_consent_options['uitleg_nl_3'] ) ? esc_attr( $this->divtag_cookie_consent_options['uitleg_nl_3']) : ''
+      '<textarea class="large-text" rows="5" name="divtag_cookie_consent_option_name[uitleg_nl]" id="uitleg_nl">%s</textarea>',
+      isset( $this->divtag_cookie_consent_options['uitleg_nl'] ) ? esc_attr( $this->divtag_cookie_consent_options['uitleg_nl']) : ''
     );
   }
 
-  public function titel_en_4_callback() {
+  public function titel_en_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[titel_en_4]" id="titel_en_4" value="%s">',
-      isset( $this->divtag_cookie_consent_options['titel_en_4'] ) ? esc_attr( $this->divtag_cookie_consent_options['titel_en_4']) : ''
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[titel_en]" id="titel_en" value="%s">',
+      isset( $this->divtag_cookie_consent_options['titel_en'] ) ? esc_attr( $this->divtag_cookie_consent_options['titel_en']) : ''
     );
   }
 
-  public function uitleg_en_5_callback() {
+  public function uitleg_en_callback() {
     printf(
-      '<textarea class="large-text" rows="5" name="divtag_cookie_consent_option_name[uitleg_en_5]" id="uitleg_en_5">%s</textarea>',
-      isset( $this->divtag_cookie_consent_options['uitleg_en_5'] ) ? esc_attr( $this->divtag_cookie_consent_options['uitleg_en_5']) : ''
+      '<textarea class="large-text" rows="5" name="divtag_cookie_consent_option_name[uitleg_en]" id="uitleg_en">%s</textarea>',
+      isset( $this->divtag_cookie_consent_options['uitleg_en'] ) ? esc_attr( $this->divtag_cookie_consent_options['uitleg_en']) : ''
     );
   }
 
-  public function contact_url_6_callback() {
+  public function contact_url_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[contact_url_6]" id="contact_url_6" value="%s"><p class="description">Vul hier een adres in waar de gebruiker heen kan gaan om meer informatie te verkrijgen. Als dit leeg gelaten wordt, wordt het gevuld met het admin emailadres en mailto naar <b>' . get_option("admin_email") . '</b>.</p>',
-      isset( $this->divtag_cookie_consent_options['contact_url_6'] ) ? esc_attr( $this->divtag_cookie_consent_options['contact_url_6']) : ''
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[contact_url]" id="contact_url" value="%s"><p class="description">Vul hier een adres in waar de gebruiker heen kan gaan om meer informatie te verkrijgen. Als dit leeg gelaten wordt, wordt het gevuld met het admin emailadres en mailto naar <b>' . get_option("admin_email") . '</b>.</p>',
+      isset( $this->divtag_cookie_consent_options['contact_url'] ) ? esc_attr( $this->divtag_cookie_consent_options['contact_url']) : ''
     );
   }
 
-  public function layout_7_callback() {
-		?> <select name="divtag_cookie_consent_option_name[layout_7]" id="layout_7">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout_7'] ) && $this->divtag_cookie_consent_options['layout_7'] === 'cloud') ? 'selected' : '' ; ?>
+  public function layout_callback() {
+		?> <select name="divtag_cookie_consent_option_name[layout]" id="layout">
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'cloud') ? 'selected' : '' ; ?>
 			<option value="cloud" <?php echo $selected; ?>>Cloud</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout_7'] ) && $this->divtag_cookie_consent_options['layout_7'] === 'box') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'box') ? 'selected' : '' ; ?>
 			<option value="box" <?php echo $selected; ?>>Box</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout_7'] ) && $this->divtag_cookie_consent_options['layout_7'] === 'bar') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'bar') ? 'selected' : '' ; ?>
 			<option value="bar" <?php echo $selected; ?>>Bar</option>
 		</select> <?php
 	}
 
-	public function positie_verticaal_8_callback() {
-		?> <select name="divtag_cookie_consent_option_name[positie_verticaal_8]" id="positie_verticaal_8">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal_8'] ) && $this->divtag_cookie_consent_options['positie_verticaal_8'] === 'bottom') ? 'selected' : '' ; ?>
+	public function positie_verticaal_callback() {
+		?> <select name="divtag_cookie_consent_option_name[positie_verticaal]" id="positie_verticaal">
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal'] ) && $this->divtag_cookie_consent_options['positie_verticaal'] === 'bottom') ? 'selected' : '' ; ?>
 			<option value="bottom" <?php echo $selected; ?>> Onderaan</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal_8'] ) && $this->divtag_cookie_consent_options['positie_verticaal_8'] === 'middle') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal'] ) && $this->divtag_cookie_consent_options['positie_verticaal'] === 'middle') ? 'selected' : '' ; ?>
 			<option value="middle" <?php echo $selected; ?>> In het midden</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal_8'] ) && $this->divtag_cookie_consent_options['positie_verticaal_8'] === 'top') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_verticaal'] ) && $this->divtag_cookie_consent_options['positie_verticaal'] === 'top') ? 'selected' : '' ; ?>
 			<option value="top" <?php echo $selected; ?>> Bovenaan</option>
 		</select> <?php
 	}
 
-	public function positie_horizontaal_9_callback() {
-		?> <select name="divtag_cookie_consent_option_name[positie_horizontaal_9]" id="positie_horizontaal_9">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal_9'] ) && $this->divtag_cookie_consent_options['positie_horizontaal_9'] === 'right') ? 'selected' : '' ; ?>
+	public function positie_horizontaal_callback() {
+		?> <select name="divtag_cookie_consent_option_name[positie_horizontaal]" id="positie_horizontaal">
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal'] ) && $this->divtag_cookie_consent_options['positie_horizontaal'] === 'right') ? 'selected' : '' ; ?>
 			<option value="right" <?php echo $selected; ?>> Rechts</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal_9'] ) && $this->divtag_cookie_consent_options['positie_horizontaal_9'] === 'left') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal'] ) && $this->divtag_cookie_consent_options['positie_horizontaal'] === 'left') ? 'selected' : '' ; ?>
 			<option value="left" <?php echo $selected; ?>> Links</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal_9'] ) && $this->divtag_cookie_consent_options['positie_horizontaal_9'] === 'center') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['positie_horizontaal'] ) && $this->divtag_cookie_consent_options['positie_horizontaal'] === 'center') ? 'selected' : '' ; ?>
 			<option value="center" <?php echo $selected; ?>> In het midden</option>
 		</select> <?php
 	}
 
-  public function transitie_11_callback() {
-		?> <select name="divtag_cookie_consent_option_name[transitie_11]" id="transitie_11">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie_11'] ) && $this->divtag_cookie_consent_options['transitie_11'] === 'slide') ? 'selected' : '' ; ?>
+  public function transitie_callback() {
+		?> <select name="divtag_cookie_consent_option_name[transitie]" id="transitie">
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie'] ) && $this->divtag_cookie_consent_options['transitie'] === 'slide') ? 'selected' : '' ; ?>
 			<option value="slide" <?php echo $selected; ?>> Slide</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie_11'] ) && $this->divtag_cookie_consent_options['transitie_11'] === 'zoom') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->divtag_cookie_consent_options['transitie'] ) && $this->divtag_cookie_consent_options['transitie'] === 'zoom') ? 'selected' : '' ; ?>
 			<option value="zoom" <?php echo $selected; ?>> Zoom</option>
 		</select> <?php
 	}
 
-	public function draai_knoppen_om_10_callback() {
+	public function draai_knoppen_om_callback() {
 		printf(
-			'<input type="checkbox" name="divtag_cookie_consent_option_name[draai_knoppen_om_10]" id="draai_knoppen_om_10" value="draai_knoppen_om_10" %s> <label for="draai_knoppen_om_10">Draai de acceptatie en weiger knoppen om</label>',
-			( isset( $this->divtag_cookie_consent_options['draai_knoppen_om_10'] ) && $this->divtag_cookie_consent_options['draai_knoppen_om_10'] === 'draai_knoppen_om_10' ) ? 'checked' : ''
+			'<input type="checkbox" name="divtag_cookie_consent_option_name[draai_knoppen_om]" id="draai_knoppen_om" value="draai_knoppen_om" %s> <label for="draai_knoppen_om">Draai de acceptatie en weiger knoppen om</label>',
+			( isset( $this->divtag_cookie_consent_options['draai_knoppen_om'] ) && $this->divtag_cookie_consent_options['draai_knoppen_om'] === 'draai_knoppen_om' ) ? 'checked' : ''
 		);
 	}
 
@@ -396,19 +396,19 @@ class DivtagCookieConsent {
 /* 
 * Retrieve this value with:
 * $divtag_cookie_consent_options = get_option( 'divtag_cookie_consent_option_name' ); // Array of All Options
-* $forceer_consent_0 = $divtag_cookie_consent_options['forceer_consent_0']; // Forceer consent
-* $donkere_modus_1 = $divtag_cookie_consent_options['donkere_modus_1']; // Donkere modus
-* $titel_nl_2 = $divtag_cookie_consent_options['titel_nl_2']; // Titel - NL
-* $uitleg_nl_3 = $divtag_cookie_consent_options['uitleg_nl_3']; // Uitleg - NL
-* $titel_en_4 = $divtag_cookie_consent_options['titel_en_4']; // Titel - EN
-* $uitleg_en_5 = $divtag_cookie_consent_options['uitleg_en_5']; // Uitleg - EN
-* $contact_url_6 = $divtag_cookie_consent_options['contact_url_6']; // Contact URL
-* $layout_7 = $divtag_cookie_consent_options['layout_7']; // Layout
-* $positie_verticaal_8 = $divtag_cookie_consent_options['positie_verticaal_8']; // Positie verticaal
-* $positie_horizontaal_9 = $divtag_cookie_consent_options['positie_horizontaal_9']; // Positie horizontaal
-* $draai_knoppen_om_10 = $divtag_cookie_consent_options['draai_knoppen_om_10']; // Draai knoppen om
-* $transitie_11 = $divtag_cookie_consent_options['transitie_11']; // Transitie
-* $knoppen_kleur_12 = $divtag_cookie_consent_options['knoppen_kleur_12']; // Knoppen kleur
+* $forceer_consent = $divtag_cookie_consent_options['forceer_consent']; // Forceer consent
+* $donkere_modus = $divtag_cookie_consent_options['donkere_modus']; // Donkere modus
+* $titel_nl = $divtag_cookie_consent_options['titel_nl']; // Titel - NL
+* $uitleg_nl = $divtag_cookie_consent_options['uitleg_nl']; // Uitleg - NL
+* $titel_en = $divtag_cookie_consent_options['titel_en']; // Titel - EN
+* $uitleg_en = $divtag_cookie_consent_options['uitleg_en']; // Uitleg - EN
+* $contact_url = $divtag_cookie_consent_options['contact_url']; // Contact URL
+* $layout = $divtag_cookie_consent_options['layout']; // Layout
+* $positie_verticaal = $divtag_cookie_consent_options['positie_verticaal']; // Positie verticaal
+* $positie_horizontaal = $divtag_cookie_consent_options['positie_horizontaal']; // Positie horizontaal
+* $draai_knoppen_om = $divtag_cookie_consent_options['draai_knoppen_om']; // Draai knoppen om
+* $transitie = $divtag_cookie_consent_options['transitie']; // Transitie
+* $knoppen_kleur = $divtag_cookie_consent_options['knoppen_kleur']; // Knoppen kleur
 */
 
 
