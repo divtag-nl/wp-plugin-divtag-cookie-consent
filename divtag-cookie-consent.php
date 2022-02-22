@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/Blastius/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.1.1
+* Version: 1.1.2
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -13,7 +13,7 @@
  */
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/Blastius/wp-plugin-divtag-cookie-consent/',
+	'https://github.com/Blastius/wp-plugin-divtag-cookie-consent',
 	__FILE__,
 	'wp-plugin-divtag-cookie-consent'
 );
