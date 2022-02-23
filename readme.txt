@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires PHP: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,6 +33,9 @@ Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie in
 `<button type="button" data-cc="c-settings">Cookie voorkeuren</button>`
 
 == Changelog ==
+
+= 1.1.4 =
+* Fix knoppen hover kleur wanneer deze ingesteld is vanuit de instellingen.
 
 = 1.1 =
 * Instellingen hebben nieuwe namen in de backend code, dus als er instellingen zijn ingesteld voor deze versie, let dan op dat deze gereset gaan worden.

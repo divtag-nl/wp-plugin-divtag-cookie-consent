@@ -1,3 +1,5 @@
+import colorShade from './color-shade.js';
+
 const cc = initCookieConsent();
 
 const get_options = cookie_consent_settings.options;
@@ -38,6 +40,7 @@ if (get_options.contact_url) {
 // If a button (theme) color is set, override the existing default color
 if (get_options.knoppen_kleur) {
   document.documentElement.style.setProperty('--cc-btn-primary-bg', get_options.knoppen_kleur);
+  document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.knoppen_kleur, -15));
 }
 
 // If dark mode setting is checked, set dark theme

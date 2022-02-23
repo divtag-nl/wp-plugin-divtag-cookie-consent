@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.1.3
+* Version: 1.1.4
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -40,8 +40,16 @@ function footer_scripts(){
   <?php
 }
 
+function add_type_attribute($tag, $handle, $src) {
+  if ( 'cookie-consent' !== $handle ) {
+    return $tag;
+  }
+  $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+  return $tag;
+}
+
 function load_scripts() {
-  $js_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/cookie-consent.js' ));
+  $js_ver = date("dmy-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/cookie-consent.js' ));
 
   wp_enqueue_script('cookie-consent', plugins_url( 'assets/js/cookie-consent.js', __FILE__ ), array(), $js_ver, true );
   wp_localize_script('cookie-consent', 'cookie_consent_settings',
@@ -51,6 +59,7 @@ function load_scripts() {
     )
   );
 }
+add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
 add_action('wp_enqueue_scripts', 'load_scripts');
 
 
