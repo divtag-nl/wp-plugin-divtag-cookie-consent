@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 1.1.4
+Stable tag: 1.2.0
 Requires PHP: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,6 +34,9 @@ Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie in
 
 == Changelog ==
 
+= 1.2 =
+* Nieuwe instellingen om de cookie voorkeuren modal als box of bar te weergeven.
+
 = 1.1.4 =
 * Fix knoppen hover kleur wanneer deze ingesteld is vanuit de instellingen.
 
@@ -44,6 +47,9 @@ Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie in
 * Eerste release.
 
 == Upgrade Notice ==
+
+= 1.2 =
+Er zijn enkele velden in de backend aangepast waardoor bestaande instellingen verloren zijn gegaan.
 
 = 1.1 =
 Deze versie verbetert de backend code, geen nieuwe features. Let op dat de huidige instellingen gereset worden.

@@ -1,4 +1,12 @@
-export default function colorShade(colorCode, amount) {
+/**
+ * @param {String} colorCode 
+ * Ex. '#ff9900'
+ * 
+ * @param {Number} shadeLevel
+ * Between -100 and 100 (negative for a darker shade, positive for a lighter shade)
+ */
+
+export default function colorShade(colorCode, shadeLevel) {
   let usePound = false;
 
   if (colorCode[0] == "#") {
@@ -8,9 +16,9 @@ export default function colorShade(colorCode, amount) {
 
   let num = parseInt(colorCode, 16);
 
-  let r = (num >> 16) + amount;
-  let g = (num & 0x0000FF) + amount;
-  let b = ((num >> 8) & 0x00FF) + amount;
+  let r = (num >> 16) + shadeLevel;
+  let g = (num & 0x0000FF) + shadeLevel;
+  let b = ((num >> 8) & 0x00FF) + shadeLevel;
 
   if (r > 255) {
     r = 255;

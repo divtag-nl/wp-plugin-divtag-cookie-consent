@@ -1,8 +1,10 @@
 import colorShade from './color-shade.js';
 
+
 const cc = initCookieConsent();
 
 const get_options = cookie_consent_settings.options;
+
 const options = {
   force_consent: get_options.forceer_consent ?
     true :
@@ -21,21 +23,31 @@ const options = {
     get_options.uitleg_nl :
     'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
-    layout: get_options.layout || 'cloud',
-    position_vertical: get_options.positie_verticaal || 'bottom',
-    position_horizontal: get_options.positie_horizontaal || 'right',
-    transition: get_options.transitie,
-    swap_buttons: get_options.draai_knoppen_om ?
-      true :
-      false,
+		consent_modal: {
+			layout: get_options.layout || 'cloud',
+			position_y: get_options.positie_verticaal || 'bottom',
+			position_x: get_options.positie_horizontaal || 'right',
+			transition: get_options.transitie,
+			swap_buttons: get_options.draai_knoppen_om ?
+				true :
+				false,
+		},
+		settings_modal: {
+			layout: get_options.layout_settings || 'box',
+			position_x: get_options.positie_horizontaal_settings || 'right',
+			transition: get_options.transitie_settings,
+		},
   },
 }
 
+
 // If a contact url is set, override the admin email
 let contactUrl = 'mailto:' + cookie_consent_settings.admin_email;
+
 if (get_options.contact_url) {
   contactUrl = get_options.contact_url;
 }
+
 
 // If a button (theme) color is set, override the existing default color
 if (get_options.knoppen_kleur) {
@@ -43,8 +55,10 @@ if (get_options.knoppen_kleur) {
   document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.knoppen_kleur, -15));
 }
 
+
 // If dark mode setting is checked, set dark theme
 options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
+
 
 // Set language by looking at the html attribute 'lang'
 const current_language = document.documentElement.getAttribute('lang') === 'nl' ? 'nl' : 'en'
@@ -59,11 +73,16 @@ cc.run({
 
   gui_options: {
     consent_modal: {
-      layout: options.gui.layout,
-      position: `${options.gui.position_vertical} ${options.gui.position_horizontal}`,
-      transition: options.gui.transition,
-      swap_buttons: options.gui.swap_buttons,
-    }
+      layout: options.gui.consent_modal.layout,
+      position: `${options.gui.consent_modal.position_y} ${options.gui.consent_modal.position_x}`,
+      transition: options.gui.consent_modal.transition,
+      swap_buttons: options.gui.consent_modal.swap_buttons,
+    },
+		settings_modal: {
+			layout: options.gui.settings_modal.layout,
+      position: options.gui.settings_modal.position_x,
+      transition: options.gui.settings_modal.transition,
+		}
   },
 
   languages: {
