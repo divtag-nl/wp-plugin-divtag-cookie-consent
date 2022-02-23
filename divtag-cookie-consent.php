@@ -1,9 +1,9 @@
 <?php
 /**
 * Plugin Name: Divtag Cookie Consent
-* Plugin URI: https://github.com/Blastius/wp-plugin-divtag-cookie-consent
+* Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.1.2
+* Version: 1.1.3
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -13,7 +13,7 @@
  */
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/Blastius/wp-plugin-divtag-cookie-consent',
+	'https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent',
 	__FILE__,
 	'wp-plugin-divtag-cookie-consent'
 );
@@ -44,10 +44,10 @@ function load_scripts() {
   $js_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/cookie-consent.js' ));
 
   wp_enqueue_script('cookie-consent', plugins_url( 'assets/js/cookie-consent.js', __FILE__ ), array(), $js_ver, true );
-  wp_localize_script('cookie-consent', 'cookieConsentSettings',
+  wp_localize_script('cookie-consent', 'cookie_consent_settings',
     array(
       'options' => get_option('divtag_cookie_consent_option_name'),
-      'adminEmail' => get_option('admin_email'),
+      'admin_email' => get_option('admin_email'),
     )
   );
 }
@@ -89,6 +89,7 @@ class DivtagCookieConsent {
 
 		<div class="wrap">
 			<h2>Divtag Cookie Consent</h2>
+      <p>De taal van de Cookie Consent wordt bepaald door de WordPress taal instelling. Als Nederlands niet geselecteerd is, wordt automatisch Engels toegepast.</p>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
