@@ -3,13 +3,13 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.2.0
+* Version: 1.2.1
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
 
 /**
- * Bitbucket WP Plugin Update checker
+ * WP Plugin Update checker
  */
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
@@ -253,7 +253,7 @@ class DivtagCookieConsent {
 
 		add_settings_field(
 			'positie_horizontaal_settings', // id
-			'Positie horizontaal', // title
+			'Positie horizontaal (Bar)', // title
 			array( $this, 'positie_horizontaal_settings_callback' ), // callback
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_settings_modal_section' // section
