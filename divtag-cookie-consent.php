@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.2.1
+* Version: 1.2.2
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -26,14 +26,14 @@ $myUpdateChecker->setBranch('master');
  * Load (external) scripts
  */
 
-add_action( 'wp_head', 'header_scripts' );
+add_action('wp_head', 'header_scripts');
 function header_scripts(){
   ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.0/dist/cookieconsent.css">
   <?php
 }
 
-add_action( 'wp_footer', 'footer_scripts' );
+add_action('wp_footer', 'footer_scripts');
 function footer_scripts(){
   ?>
   <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.0/dist/cookieconsent.js"></script>
@@ -41,7 +41,7 @@ function footer_scripts(){
 }
 
 function add_type_attribute($tag, $handle, $src) {
-  if ( 'cookie-consent' !== $handle ) {
+  if ('cookie-consent' !== $handle) {
     return $tag;
   }
   $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
@@ -62,6 +62,13 @@ function load_scripts() {
 add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
 add_action('wp_enqueue_scripts', 'load_scripts');
 
+
+function load_admin_scripts() {
+  wp_enqueue_script('coloris-js', plugin_dir_url( __FILE__) . 'assets/js/coloris/coloris.min.js', array(), '0.10.0');
+  wp_register_style('coloris-css', plugin_dir_url( __FILE__) . 'assets/js/coloris/coloris.min.css', false, '0.10.0');
+  wp_enqueue_style('coloris-css');
+}
+add_action('admin_enqueue_scripts', 'load_admin_scripts');
 
 /**
  * WordPress Option Page including custom Cookie Consent settings
@@ -343,7 +350,7 @@ class DivtagCookieConsent {
 
   public function knoppen_kleur_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur]" id="knoppen_kleur" value="%s"><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur]" id="knoppen_kleur" value="%s" data-coloris><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
       isset( $this->divtag_cookie_consent_options['knoppen_kleur'] ) ? esc_attr( $this->divtag_cookie_consent_options['knoppen_kleur']) : ''
     );
   }

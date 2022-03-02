@@ -1,6 +1,6 @@
 /**
  * @param {String} colorCode 
- * Ex. '#ff9900'
+ * Hex color, for example '#ff9900'
  * 
  * @param {Number} shadeLevel
  * Between -100 and 100 (negative for a darker shade, positive for a lighter shade)

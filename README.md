@@ -4,6 +4,9 @@
 - [orestbida/cookieconsent - v2.8.0](https://github.com/orestbida/cookieconsent/releases/tag/v2.8.0)
 - [YahnisElsts/plugin-update-checker - v4.11](https://github.com/YahnisElsts/plugin-update-checker/releases/tag/v4.11)
 
+### Admin
+- [mdbassit/Coloris - v0.10.0](https://github.com/mdbassit/Coloris/releases/tag/v0.10.0)
+
 ## Development
 De plugin in **wp-content/plugins** clonen, vervolgens zijn alle bestanden naar wens aan te passen. Als een nieuwe release klaar is, update het versienummer in **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer als in eerder benoemde bestanden is toegepast.
 

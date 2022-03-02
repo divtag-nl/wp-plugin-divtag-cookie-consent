@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,6 +34,9 @@ Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie in
 `<button type="button" data-cc="c-settings">Cookie voorkeuren</button>`
 
 == Changelog ==
+
+= 1.2.2 =
+* Kleur instelling voor de knoppen heeft nu een colorpicker.
 
 = 1.2 =
 * Nieuwe instellingen om de cookie voorkeuren modal als box of bar te weergeven.
