@@ -3,14 +3,16 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.2.3
+* Version: 1.3.0
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
 
+
 /**
  * WP Plugin Update checker
  */
+
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent',
@@ -18,47 +20,46 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'wp-plugin-divtag-cookie-consent'
 );
 
-//Set the branch that contains the stable release.
+// Set the branch that contains the stable release
 $myUpdateChecker->setBranch('master');
 
 
-function add_type_attribute($tag, $handle, $src) {
-  if ('cookie-consent' !== $handle) {
-    return $tag;
-  }
-  $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
-  return $tag;
-}
+/**
+ * Load scripts for the client
+ */
 
 function load_scripts() {
-  $js_ver = date("dmy-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/cookie-consent.js' ));
+  $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
 
-  wp_enqueue_script('cookieconsent-js', plugin_dir_url( __FILE__ ) . 'assets/js/cookieconsent/cookieconsent.min.js', array(), '2.8.0', true);
-  wp_register_style('cookieconsent-css', plugin_dir_url( __FILE__ ) . 'assets/js/cookieconsent/cookieconsent.min.css', false, '2.8.0');
+  wp_enqueue_script('app-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/app-client.js'}, array(), null, true);
+  wp_register_style('app-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/app-client.css'}, false, null);
 
-  wp_enqueue_script('cookie-consent', plugin_dir_url( __FILE__ ) . 'assets/js/cookie-consent.js', array(), $js_ver, true );
-  wp_localize_script('cookie-consent', 'cookie_consent_settings',
+  wp_localize_script('app-js', 'cookie_consent_settings',
     array(
       'options' => get_option('divtag_cookie_consent_option_name'),
       'admin_email' => get_option('admin_email'),
     )
   );
 
-  wp_enqueue_style('cookieconsent-css');
+  wp_enqueue_style('app-css');
 }
-add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
 add_action('wp_enqueue_scripts', 'load_scripts');
 
 
+/**
+ * Load scripts for the admin
+ */
+
 function load_admin_scripts() {
-  wp_enqueue_script('coloris-js', plugin_dir_url( __FILE__ ) . 'assets/js/coloris/coloris.min.js', array(), '0.10.0');
-  wp_register_style('coloris-css', plugin_dir_url( __FILE__ ) . 'assets/js/coloris/coloris.min.css', false, '0.10.0');
-  wp_register_style('coloris-css-custom', plugin_dir_url( __FILE__ ) . 'assets/css/coloris-custom.css', false, '1.0.0');
+  $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
+
+  wp_enqueue_script('app-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/app-admin.js'}, array(), null);
+  wp_register_style('app-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/app-admin.css'}, false, null);
   
-  wp_enqueue_style('coloris-css');
-  wp_enqueue_style('coloris-css-custom');
+  wp_enqueue_style('app-css');
 }
 add_action('admin_enqueue_scripts', 'load_admin_scripts');
+
 
 /**
  * WordPress Option Page including custom Cookie Consent settings
@@ -340,7 +341,7 @@ class DivtagCookieConsent {
 
   public function knoppen_kleur_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur]" id="knoppen_kleur" value="%s" data-coloris><p class="description">Vul een Hex kleurcode in inclusief \'#\' om de standaard kleur voor de knoppen te vervangen.</p>',
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[knoppen_kleur]" id="knoppen_kleur" value="%s" data-coloris>',
       isset( $this->divtag_cookie_consent_options['knoppen_kleur'] ) ? esc_attr( $this->divtag_cookie_consent_options['knoppen_kleur']) : ''
     );
   }
