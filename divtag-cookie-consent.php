@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.3.1
+* Version: 1.3.2
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
