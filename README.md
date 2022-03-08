@@ -10,7 +10,7 @@
 ## Development
 De plugin in de map **wp-content/plugins** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn dev` of `yarn watch` uit om alle bestanden naar wens aan te passen. 
 
-Als een nieuwe release klaar is voer `yarn prod` uit om alle gegenereerde javascript en css te minificeren en update het versienummer in **package.json**, **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer als in eerder benoemde bestanden is toegepast. Maak vervolgens van de laatste tag een release op Github met hetzeflde versienummer.
+Als een nieuwe release klaar is voer `yarn prod` uit om alle gegenereerde javascript en css te minificeren en update het versienummer in **package.json**, **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer als in eerder benoemde bestanden is toegepast.
 
 [Plugin update checker](https://github.com/YahnisElsts/plugin-update-checker) wordt gebruikt om te kijken of er updates zijn van de plugin in andere WordPress instanties.
 
