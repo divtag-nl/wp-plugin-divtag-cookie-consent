@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -11,29 +11,14 @@ Divtag Cookie Consent WordPress Plugin
 
 == Description ==
 
-= Externe plugins =
-- [orestbida/cookieconsent - v2.8.0](https://github.com/orestbida/cookieconsent/releases/tag/v2.8.0)
-- [YahnisElsts/plugin-update-checker - v4.11](https://github.com/YahnisElsts/plugin-update-checker/releases/tag/v4.11)
+Wanneer de plugin geïnstalleerd en geactiveerd is, komt er links in het menu boven Instellingen een nieuwe knop te staan genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te overschrijven.
 
-= Gebruik =
-Wanneer de plugin is geïnstalleerd en geactiveerd is, zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te overschijven.
-
-= Blokkeren van externe scripts =
-Huidige categorieën die te blokkeren zijn:
-- `marketing`
-
-Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden als deze instelling is gekozen het volgende gebeuren:
-
-Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag het type `text/plain` krijgen en voeg `data-cookiecategory="marketing"` toe:
-
-`<script type="text/plain" data-cookiecategory="marketing" src="./assets/js/my_custom_script.js" defer></script>`
-
-= Cookie instellingen modal tonen =
-Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie instellingen te tonen:
-
-`<button type="button" data-cc="c-settings">Cookie voorkeuren</button>`
+Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent) voor meer informatie.
 
 == Changelog ==
+
+= 1.3.1 =
+* Code verbeteringen.
 
 = 1.3.0 =
 * Integreer webpack mix voor coding verbeteringen en kleinere productie bestanden.
@@ -59,7 +44,7 @@ Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie in
 == Upgrade Notice ==
 
 = 1.2 =
-Er zijn enkele velden in de backend aangepast waardoor bestaande instellingen verloren zijn gegaan.
+Er zijn enkele velden in de backend aangepast waardoor bestaande instellingen verloren kunnen gaan.
 
 = 1.1 =
 Deze versie verbetert de backend code, geen nieuwe features. Let op dat de huidige instellingen gereset worden.

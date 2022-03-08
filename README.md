@@ -18,7 +18,7 @@ Als een nieuwe release klaar is voer `yarn prod` uit om alle gegenereerde javasc
 Bij het toevoegen van velden voor de instellingen, is https://jeremyhixon.com/tool/wordpress-option-page-generator/ een handige generator.
 
 ## Gebruik
-Download de plugin en plaats alle bestanden in een aangemaakte map genaamd **wp-plugin-divtag-cookie-consent** in de map **wp-content/plugins**. Activeer de plugin op de plugin pagina in WordPress. Vanaf nu zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te overschrijven.
+Download de plugin en plaats alle bestanden in een aangemaakte map genaamd **divtag-cookie-consent** in de map **wp-content/plugins**. Activeer de plugin op de plugin pagina in WordPress. Vanaf nu zou er links in het menu een nieuwe knop moeten verschijnen genaamd Cookie Consent. Hier zijn alle instellingen te vinden om de standaard instellingen te overschrijven.
 
 ### Blokkeren van externe scripts
 Huidige categorieën die te blokkeren zijn:

@@ -7,36 +7,36 @@ const cc = initCookieConsent();
 const get_options = cookie_consent_settings.options;
 
 const options = {
-  force_consent: get_options.forceer_consent ?
+  force_consent: get_options.force_consent ?
     true :
     false,
-  dark_mode: get_options.donkere_modus,
-  title_nl: get_options.titel_nl ?
-    get_options.titel_nl :
+  dark_mode: get_options.dark_mode,
+  title_nl: get_options.title_nl ?
+    get_options.title_nl :
     'We gebruiken cookies!',
-  description_nl: get_options.uitleg_nl ?
-    get_options.uitleg_nl :
+  description_nl: get_options.description_nl ?
+    get_options.description_nl :
     'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
-  title_en: get_options.titel_en ?
-    get_options.titel_nl :
+  title_en: get_options.title_en ?
+    get_options.title_nl :
     'We use cookies!',
-  description_en: get_options.uitleg_en ?
-    get_options.uitleg_nl :
+  description_en: get_options.description_en ?
+    get_options.description_nl :
     'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
 		consent_modal: {
 			layout: get_options.layout || 'cloud',
-			position_y: get_options.positie_verticaal || 'bottom',
-			position_x: get_options.positie_horizontaal || 'right',
-			transition: get_options.transitie,
-			swap_buttons: get_options.draai_knoppen_om ?
+			position_y: get_options.position_vertical || 'bottom',
+			position_x: get_options.position_horizontal || 'right',
+			transition: get_options.transition,
+			swap_buttons: get_options.swap_buttons ?
 				true :
 				false,
 		},
 		settings_modal: {
 			layout: get_options.layout_settings || 'box',
-			position_x: get_options.positie_horizontaal_settings || 'right',
-			transition: get_options.transitie_settings,
+			position_x: get_options.position_horizontal_settings || 'right',
+			transition: get_options.transition_settings,
 		},
   },
 }
@@ -51,9 +51,9 @@ if (get_options.contact_url) {
 
 
 // If a button (theme) color is set, override the existing default color
-if (get_options.knoppen_kleur) {
-  document.documentElement.style.setProperty('--cc-btn-primary-bg', get_options.knoppen_kleur);
-  document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.knoppen_kleur, -15));
+if (get_options.button_color) {
+  document.documentElement.style.setProperty('--cc-btn-primary-bg', get_options.button_color);
+  document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.button_color, -15));
 }
 
 
