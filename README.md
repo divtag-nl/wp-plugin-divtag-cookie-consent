@@ -26,7 +26,7 @@ Huidige categorieën die te blokkeren zijn:
 
 Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden als deze instelling is gekozen het volgende gebeuren:
 
-Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag het type `text/plain` krijgen en voeg `data-cookiecategory="marketing"` toe:
+Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag `type="text/plain"` krijgen en voeg `data-cookiecategory="marketing"` toe:
 
 `<script type="text/plain" data-cookiecategory="marketing" src="./assets/js/my_custom_script.js" defer></script>`
 

@@ -1,13 +1,13 @@
 {
   "name": "wp-plugin-divtag-cookie-consent",
-  "version": "1.3.0",
-  "main": "index.js",
+  "version": "1.4.0",
   "repository": "git@github.com:divtag-nl/wp-plugin-divtag-cookie-consent.git",
   "author": "Divtag",
   "license": "MIT",
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
+    "hot": "mix watch --hot",
     "prod": "mix --production"
   },
   "dependencies": {

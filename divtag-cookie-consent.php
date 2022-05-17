@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.3.2
+* Version: 1.4.0
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -31,17 +31,17 @@ $myUpdateChecker->setBranch('master');
 function load_scripts() {
   $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
 
-  wp_enqueue_script('app-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/app-client.js'}, array(), null, true);
-  wp_register_style('app-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/app-client.css'}, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/cookie-consent-client.js'}, array(), null, true);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/cookie-consent-client.css'}, false, null);
 
-  wp_localize_script('app-js', 'cookie_consent_settings',
+  wp_localize_script('cookie-consent-js', 'cookie_consent_settings',
     array(
       'options' => get_option('divtag_cookie_consent_option_name'),
       'admin_email' => get_option('admin_email'),
     )
   );
 
-  wp_enqueue_style('app-css');
+  wp_enqueue_style('cookie-consent-css');
 }
 add_action('wp_enqueue_scripts', 'load_scripts');
 
@@ -53,10 +53,10 @@ add_action('wp_enqueue_scripts', 'load_scripts');
 function load_admin_scripts() {
   $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
 
-  wp_enqueue_script('app-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/app-admin.js'}, array(), null);
-  wp_register_style('app-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/app-admin.css'}, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/cookie-consent-admin.js'}, array(), null);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/cookie-consent-admin.css'}, false, null);
   
-  wp_enqueue_style('app-css');
+  wp_enqueue_style('cookie-consent-css');
 }
 add_action('admin_enqueue_scripts', 'load_admin_scripts');
 
