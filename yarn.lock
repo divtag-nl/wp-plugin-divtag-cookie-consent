@@ -930,10 +930,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@melloware/coloris@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@melloware/coloris/-/coloris-0.10.0.tgz#13483d2b35a78d52c8b802c444c85f3c0c1f6f05"
-  integrity sha512-AsHgSIZJKjdELApdcX05WA+Nul4zyeN72YyJtNMuVegPHszafkJKdaj+vmWYZBE4f8naKqwaNY9BuU6v1o0ivQ==
+"@melloware/coloris@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@melloware/coloris/-/coloris-0.15.0.tgz#3acb7f3f91ce9f51c97bd736b1006dab1276378a"
+  integrity sha512-MtRn0QfxXkis6o47f97DR7NgHOYjtf04Fqx1b/rj6afEzwiPaStrVn3yYoxI4PDtGI2dQZOrsNNzPlTlpM3Wtg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3300,10 +3300,10 @@ klona@^2.0.5:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
-laravel-mix@^6.0.43:
-  version "6.0.43"
-  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-6.0.43.tgz#6a9d67419e891f5075fc08bfff47770bf1f00d8a"
-  integrity sha512-SOO+C1aOpVSAUs30DYc6k/e0QJxfyD42aav4IKJtE5UZKw9ROWcVzkVoek2J475jNeNnl7GkoLAC27gejZsQ8g==
+laravel-mix@^6.0.49:
+  version "6.0.49"
+  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-6.0.49.tgz#d718414858045df9d7467245e13fd4b45bc52c15"
+  integrity sha512-bBMFpFjp26XfijPvY5y9zGKud7VqlyOE0OWUcPo3vTBY5asw8LTjafAbee1dhfLz6PWNqDziz69CP78ELSpfKw==
   dependencies:
     "@babel/core" "^7.15.8"
     "@babel/plugin-proposal-object-rest-spread" "^7.15.6"
@@ -5023,10 +5023,10 @@ uuid@^8.3.0, uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-vanilla-cookieconsent@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/vanilla-cookieconsent/-/vanilla-cookieconsent-2.8.0.tgz#651bc9de2517571afb4ef72075d0200ec30ce343"
-  integrity sha512-ouffZlaEkrGBvYJtYt1p4tB4IQ9gdw1dZR+yJmlTjpA14PUKCWpx9gblWeujpwD5OjXI0/aWHb0M0wdYd2uJ2g==
+vanilla-cookieconsent@^2.8.4:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/vanilla-cookieconsent/-/vanilla-cookieconsent-2.8.4.tgz#04cb23fada02d054f47717e9e6b78eaaf3f0508e"
+  integrity sha512-umMPXMrIfEa83OZJdDSayE+uwGuwflYxC1QJwfp21OuuDDrMom4licpZwgHzTV5YzyZuYAKxyxgBiA92t2gHnw==
 
 vary@~1.1.2:
   version "1.1.2"

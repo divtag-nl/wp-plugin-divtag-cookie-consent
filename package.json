@@ -1,6 +1,6 @@
 {
   "name": "wp-plugin-divtag-cookie-consent",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "repository": "git@github.com:divtag-nl/wp-plugin-divtag-cookie-consent.git",
   "author": "Divtag",
   "license": "MIT",
@@ -11,10 +11,10 @@
     "prod": "mix --production"
   },
   "dependencies": {
-    "@melloware/coloris": "^0.10.0",
-    "vanilla-cookieconsent": "^2.8.0"
+    "@melloware/coloris": "^0.15.0",
+    "vanilla-cookieconsent": "^2.8.4"
   },
   "devDependencies": {
-    "laravel-mix": "^6.0.43"
+    "laravel-mix": "^6.0.49"
   }
 }
