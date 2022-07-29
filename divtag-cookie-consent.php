@@ -3,11 +3,16 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.4.2
+* Version: 1.4.3
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
 
+/**
+ * Put package info in a global variable to call for example the version of the plugin package
+ */
+
+$GLOBALS['packageInfo'] = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'package.json'));
 
 /**
  * WP Plugin Update checker
@@ -29,10 +34,8 @@ $myUpdateChecker->setBranch('master');
  */
 
 function load_scripts() {
-  $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
-
-  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/cookie-consent-client.js'}, array(), null, true);
-  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/cookie-consent-client.css'}, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-client.js', array(), $GLOBALS['packageInfo']->version, true);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-client.css?ver=' . $GLOBALS['packageInfo']->version, false, null);
 
   wp_localize_script('cookie-consent-js', 'cookie_consent_settings',
     array(
@@ -51,10 +54,8 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_admin_scripts() {
-  $mixManifest = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'dist/mix-manifest.json'));
-
-  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/js/cookie-consent-admin.js'}, array(), null);
-  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist' . $mixManifest->{'/css/cookie-consent-admin.css'}, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-admin.js?ver=' . $GLOBALS['packageInfo']->version, array(), null);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-admin.css?ver=' . $GLOBALS['packageInfo']->version, false, null);
   
   wp_enqueue_style('cookie-consent-css');
 }

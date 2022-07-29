@@ -1,20 +1,22 @@
 {
   "name": "wp-plugin-divtag-cookie-consent",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "repository": "git@github.com:divtag-nl/wp-plugin-divtag-cookie-consent.git",
+  "homepage": "https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent",
   "author": "Divtag",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "mix",
-    "watch": "mix watch",
-    "hot": "mix watch --hot",
-    "prod": "mix --production"
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@melloware/coloris": "^0.15.0",
     "vanilla-cookieconsent": "^2.8.4"
   },
   "devDependencies": {
-    "laravel-mix": "^6.0.49"
+    "vite": "^3.0.3"
   }
 }

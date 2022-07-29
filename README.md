@@ -10,9 +10,9 @@
 - [mdbassit/Coloris - v0.15.0](https://github.com/mdbassit/Coloris/releases/tag/v0.15.0)
 
 ## Development
-De plugin in de map **wp-content/plugins** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn dev` of `yarn watch` uit om alle bestanden naar wens aan te passen. 
+De plugin in de map **wp-content/plugins** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn watch` uit om alle bestanden naar wens aan te passen.
 
-Als een nieuwe release klaar is, voer `yarn prod` uit om alle gegenereerde javascript en css te minificeren. Update het versienummer in **package.json**, **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer zoals in eerder benoemde bestanden is toegepast.
+Als een nieuwe release klaar is, voer `yarn build` uit om alle gegenereerde javascript en css te minificeren. Update het versienummer in **package.json**, **readme.txt** en **divtag-cookie-consent.php**. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer zoals in eerder benoemde bestanden is toegepast.
 
 [Plugin update checker](https://github.com/YahnisElsts/plugin-update-checker) wordt gebruikt om te kijken of er updates zijn van de plugin in andere WordPress installaties.
 

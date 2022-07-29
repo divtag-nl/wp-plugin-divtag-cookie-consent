@@ -1,1 +1,7 @@
-@import 'vanilla-cookieconsent/dist/cookieconsent.css';
+#s-ttl {
+  font-size: 1.2em;
+}
+
+#s-c-bn:after, #s-c-bn:before {
+  width: 2px;
+}
