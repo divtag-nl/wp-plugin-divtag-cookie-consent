@@ -10,7 +10,7 @@
 - [mdbassit/Coloris - v0.15.0](https://github.com/mdbassit/Coloris/releases/tag/v0.15.0)
 
 ## Development
-Alle bestanden van deze repo in de map `**`wp-content/plugins/divtag-cookie-consent`**` clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn watch` uit om alle bestanden in de `/src` map naar wens aan te passen.
+Alle bestanden van deze repo in de map **wp-content/plugins/divtag-cookie-consent** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn watch` uit om alle bestanden in de `/src` map naar wens aan te passen.
 
 ### Optie pagina velden
 Bij het toevoegen van velden voor de instellingen, is [wordpress-option-page-generator](https://jeremyhixon.com/tool/wordpress-option-page-generator/) een handige generator.
@@ -31,12 +31,16 @@ Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden 
 
 Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag `type="text/plain"` krijgen en voeg `data-cookiecategory="marketing"` toe:
 
-`<script type="text/plain" data-cookiecategory="marketing" src="./assets/js/my_custom_script.js" defer></script>`
+```js
+<script type="text/plain" data-cookiecategory="marketing" src="./assets/js/my_custom_script.js" defer></script>
+```
 
 ### Cookie instellingen modal tonen
 Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie instellingen te tonen:
 
-`<button type="button" data-cc="c-settings">Cookie voorkeuren</button>`
+```html
+<button type="button" data-cc="c-settings">Cookie voorkeuren</button>
+```
 
 Zie [orestbida/cookieconsent](https://github.com/orestbida/cookieconsent) voor eventuele geupdate documentatie.
 
