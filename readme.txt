@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 6.0
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 Requires PHP: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,6 +16,10 @@ Wanneer de plugin geïnstalleerd en geactiveerd is, komt er links in het menu bo
 Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent) voor meer informatie.
 
 == Changelog ==
+
+= 1.5.0 =
+* Package updates.
+* Admin colorpicker styling fix.
 
 = 1.4.3 =
 * Code verbeteringen.

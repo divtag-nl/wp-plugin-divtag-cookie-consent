@@ -1,6 +1,6 @@
 {
   "name": "wp-plugin-divtag-cookie-consent",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "repository": "git@github.com:divtag-nl/wp-plugin-divtag-cookie-consent.git",
   "homepage": "https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent",
   "author": "Divtag",
@@ -13,10 +13,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@melloware/coloris": "^0.15.0",
-    "vanilla-cookieconsent": "^2.8.4"
+    "@melloware/coloris": "^0.16.1",
+    "vanilla-cookieconsent": "^2.8.8"
   },
   "devDependencies": {
-    "vite": "^3.0.3"
+    "vite": "^3.2.4"
   }
 }
