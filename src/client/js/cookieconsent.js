@@ -53,7 +53,7 @@ if (get_options.contact_url) {
 // If a button (theme) color is set, override the existing default color
 if (get_options.button_color) {
   document.documentElement.style.setProperty('--cc-btn-primary-bg', get_options.button_color);
-  document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.button_color, -15));
+  document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.button_color, -20));
 }
 
 
