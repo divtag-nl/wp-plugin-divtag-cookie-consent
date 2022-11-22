@@ -62,7 +62,8 @@ options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
 
 
 // Set language by looking at the html attribute 'lang'
-const current_language = document.documentElement.getAttribute('lang') === 'nl' ? 'nl' : 'en'
+const lang_attribute = document.documentElement.getAttribute('lang');
+const current_language = lang_attribute === 'nl' || lang_attribute === 'nl-NL'  ? 'nl' : 'en'
 
 
 // Run cookie consent plugin with configuration
