@@ -3,7 +3,7 @@
 }
 
 .clr-field input {
-  padding-left: 32px;
+  padding-left: 32px !important;
 }
 
 .clr-field button {
