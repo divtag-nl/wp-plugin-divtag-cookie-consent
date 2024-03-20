@@ -1,46 +1,39 @@
-import 'vanilla-cookieconsent/dist/cookieconsent.js';
+import * as CookieConsent from "vanilla-cookieconsent";
 import colorShade from './color-shade.js';
-
-
-const cc = initCookieConsent();
 
 const get_options = cookie_consent_settings.options;
 
 const options = {
-  force_consent: get_options.force_consent ?
+  forceConsent: get_options.force_consent ?
     true :
     false,
-  dark_mode: get_options.dark_mode,
-  title_nl: get_options.title_nl ?
+  titleNl: get_options.title_nl ?
     get_options.title_nl :
     'We gebruiken cookies!',
-  description_nl: get_options.description_nl ?
+  descriptionNl: get_options.description_nl ?
     get_options.description_nl :
-    'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Laat mij kiezen\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
-  title_en: get_options.title_en ?
-    get_options.title_nl :
+    'We gebruiken analytische cookies en sommige cookies worden geplaatst door diensten van derden die op onze pagina\'s worden weergegeven. Door op \'Stel individuele voorkeuren in\' te klikken, kun je meer lezen over onze cookies en je voorkeuren aanpassen.',
+  titleEn: get_options.title_en ?
+    get_options.title_en :
     'We use cookies!',
-  description_en: get_options.description_en ?
-    get_options.description_nl :
+  descriptionEn: get_options.description_en ?
+    get_options.description_en :
     'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
   gui: {
-		consent_modal: {
-			layout: get_options.layout || 'cloud',
-			position_y: get_options.position_vertical || 'bottom',
-			position_x: get_options.position_horizontal || 'right',
-			transition: get_options.transition,
-			swap_buttons: get_options.swap_buttons ?
+		consentModal: {
+			layout: get_options.layout || 'cloud inline',
+			positionY: get_options.position_vertical || 'bottom',
+			positionX: get_options.position_horizontal || 'right',
+			flipButtons: get_options.swap_buttons ?
 				true :
 				false,
 		},
-		settings_modal: {
+		preferencesModal: {
 			layout: get_options.layout_settings || 'box',
-			position_x: get_options.position_horizontal_settings || 'right',
-			transition: get_options.transition_settings,
+			positionX: get_options.position_horizontal_settings || 'right',
 		},
   },
 }
-
 
 // If a contact url is set, override the admin email
 let contactUrl = 'mailto:' + cookie_consent_settings.admin_email;
@@ -49,131 +42,136 @@ if (get_options.contact_url) {
   contactUrl = get_options.contact_url;
 }
 
-
 // If a button (theme) color is set, override the existing default color
 if (get_options.button_color) {
   document.documentElement.style.setProperty('--cc-btn-primary-bg', get_options.button_color);
+  document.documentElement.style.setProperty('--cc-btn-primary-border-color', get_options.button_color);
   document.documentElement.style.setProperty('--cc-btn-primary-hover-bg', colorShade(get_options.button_color, -20));
+  document.documentElement.style.setProperty('--cc-btn-primary-hover-border-color', colorShade(get_options.button_color, -20));
 }
 
-
-// If dark mode setting is checked, set dark theme
-options.dark_mode ? document.body.classList.toggle('c_darkmode') : '';
-
-
-// Set language by looking at the html attribute 'lang'
-const lang_attribute = document.documentElement.getAttribute('lang');
-const current_language = lang_attribute === 'nl' || lang_attribute === 'nl-NL'  ? 'nl' : 'en'
-
-
-// Run cookie consent plugin with configuration
-cc.run({
-  current_lang: current_language,
-  autoclear_cookies: true,
-  page_scripts: true,
-  force_consent: options.force_consent,
-
-  gui_options: {
-    consent_modal: {
-      layout: options.gui.consent_modal.layout,
-      position: `${options.gui.consent_modal.position_y} ${options.gui.consent_modal.position_x}`,
-      transition: options.gui.consent_modal.transition,
-      swap_buttons: options.gui.consent_modal.swap_buttons,
-    },
-		settings_modal: {
-			layout: options.gui.settings_modal.layout,
-      position: options.gui.settings_modal.position_x,
-      transition: options.gui.settings_modal.transition,
-		}
+CookieConsent.run({
+  cookie: {
+    name: "cc_cookie_v2",
+    expiresAfterDays: 365
   },
 
-  languages: {
-    'nl': {
-      consent_modal: {
-        title: options.title_nl,
-        description: options.description_nl + ' <button type="button" data-cc="c-settings" class="cc-link">Laat mij kiezen</button>',
-        primary_btn: {
-          text: 'Accepteer alles',
-          role: 'accept_all', // 'accept_selected' or 'accept_all'
-        },
-        secondary_btn: {
-          text: 'Weiger alles',
-          role: 'accept_necessary', // 'settings' or 'accept_necessary'
-        },
-      },
-      settings_modal: {
-        title: 'Cookie voorkeuren',
-        save_settings_btn: 'Sla voorkeuren op',
-        accept_all_btn: 'Accepteer alles',
-        reject_all_btn: 'Weiger alles',
-        close_btn_label: 'Sluiten',
-        blocks: [{
-          title: 'Cookie gebruik 📢',
-          description: 'We gebruiken cookies om de basis functionaliteiten van de website goed te laten werken. Je kan voor elke categorie kiezen om deze in of uit te schakelen.',
-        }, {
-          title: 'Strikt noodzakelijke cookies',
-          description: 'Deze cookies zijn nodig om de website goed te laten werken. De website zou niet meer goed kunnen werken als je deze niet accepteert.',
-          toggle: {
-            value: 'necessary',
-            enabled: true,
-            readonly: true, // cookie categories with readonly=true are all treated as "necessary cookies"
-          },
-        }, {
-          title: 'Marketing cookies',
-          description: 'Deze cookies verzamelen informatie over hoe je de website gebruikt, welke pagina\'s je bezocht hebt en op welke links je geklikt hebt. Deze data is niet geanonimiseerd en kunnen aan jou gekoppeld worden.',
-          toggle: {
-            value: 'marketing',
-            enabled: false,
-            readonly: false,
-          },
-        }, {
-          title: 'Meer informatie',
-          description: 'Voor vragen omtrent onze policy over cookies en jouw keuzes, neem <a class="cc-link" href="' + contactUrl + '" target="_blank" rel="noreferrer noopener">contact op</a>.',
-        }, ],
-      },
+  disablePageInteraction: options.forceConsent,
+
+  // https://cookieconsent.orestbida.com/reference/configuration-reference.html#guioptions
+  guiOptions: {
+    consentModal: {
+      layout: options.gui.consentModal.layout,
+      position: `${options.gui.consentModal.positionY} ${options.gui.consentModal.positionX}`,
+      equalWeightButtons: true,
+      flipButtons: options.gui.consentModal.flipButtons
     },
-    'en': {
-      consent_modal: {
-        title: options.title_en,
-        description: options.description_en + ' <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
-        primary_btn: {
-          text: 'Accept all',
-          role: 'accept_all' // 'accept_selected' or 'accept_all'
+    preferencesModal: {
+      layout: options.gui.preferencesModal.layout,
+      equalWeightButtons: true,
+      flipButtons: options.gui.consentModal.flipButtons,
+    }
+  },
+
+  categories: {
+    necessary: {
+      enabled: true,
+      readOnly: true
+    },
+    analytics: {
+      services: {
+        'Google Analytics': {
+          label: "Google Analytics",
+        }
+      }
+    },
+    ads: {
+      services: {
+        'Google Ads': {
+          label: "Google Ads",
+        }
+      }
+    }
+  },
+
+  language: {
+    autoDetect: 'document',
+    translations: {
+      nl: {
+        consentModal: {
+          title: options.titleNl,
+          description: options.descriptionNl,
+          acceptAllBtn: "Accepteer alles",
+          acceptNecessaryBtn: "Weiger alles",
+          showPreferencesBtn: "Stel individuele voorkeuren in",
         },
-        secondary_btn: {
-          text: 'Reject all',
-          role: 'accept_necessary' // 'settings' or 'accept_necessary'
+        preferencesModal: {
+          title: "Stel cookie voorkeuren in",
+          acceptAllBtn: "Accepteer alles",
+          acceptNecessaryBtn: "Weiger alles",
+          savePreferencesBtn: "Sla voorkeuren op",
+          closeIconLabel: "Sluit modal",
+          serviceCounterLabel: "Service|Services",
+          sections: [
+            {
+              title: "Jouw privacy keuzes",
+              description: "We gebruiken cookies om de basis functionaliteiten van de website goed te laten werken. Je kan voor elke niet-strict noodzakelijke categorie kiezen om deze in of uit te schakelen."
+            }, {
+              title: "Strikt noodzakelijke cookies",
+              description: "Deze cookies zijn nodig om de website goed te laten werken. Deze keuze kan niet worden uitgezet.",
+              linkedCategory: "necessary"
+            }, {
+              title: "Prestaties en analytics",
+              description: "Deze cookies verzamelen informatie over hoe je de website gebruikt, welke pagina\'s je bezocht hebt en op welke links je geklikt hebt. Deze data is niet geanonimiseerd en kunnen aan jou gekoppeld worden.",
+              linkedCategory: "analytics"
+            }, {
+              title: "Targeting en advertenties",
+              description: "Deze cookies worden gebruikt om advertentieberichten relevanter te maken voor jou en jouw interesses. Het doel is om advertenties te tonen die relevant en aantrekkelijk zijn voor de individuele gebruiker en daardoor waardevoller zijn voor uitgevers en adverteerders.",
+              linkedCategory: "ads"
+            }, {
+              title: "Meer informatie",
+              description: 'Voor vragen omtrent onze policy over cookies en jouw keuzes, neem <a href="' + contactUrl + '">contact op</a>.'
+            }
+          ]
         }
       },
-      settings_modal: {
-        title: 'Cookie preferences',
-        save_settings_btn: 'Save settings',
-        accept_all_btn: 'Accept all',
-        reject_all_btn: 'Reject all',
-        close_btn_label: 'Close',
-        blocks: [{
-          title: 'Cookie usage 📢',
-          description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.'
-        }, {
-          title: 'Strictly necessary cookies',
-          description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.',
-          toggle: {
-            value: 'necessary',
-            enabled: true,
-            readonly: true // cookie categories with readonly=true are all treated as "necessary cookies"
-          }
-        }, {
-          title: 'Marketing cookies',
-          description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is not anonymized and can be used to identify you.',
-          toggle: {
-            value: 'marketing',
-            enabled: false,
-            readonly: false
-          }
-        }, {
-          title: 'More information',
-          description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="' + contactUrl + '">contact us</a>.',
-        }]
+      en: {
+        consentModal: {
+          title: options.titleEn,
+          description: options.titleEn,
+          acceptAllBtn: "Accept all",
+          acceptNecessaryBtn: "Reject all",
+          showPreferencesBtn: "Manage Individual preferences",
+        },
+        preferencesModal: {
+          title: "Manage cookie preferences",
+          acceptAllBtn: "Accept all",
+          acceptNecessaryBtn: "Reject all",
+          savePreferencesBtn: "Accept current selection",
+          closeIconLabel: "Close modal",
+          serviceCounterLabel: "Service|Services",
+          sections: [
+            {
+              title: "Your Privacy Choices",
+              description: `In this panel you can express some preferences related to the processing of your personal information. You may review and change expressed choices at any time by resurfacing this panel via the provided link. To deny your consent to the specific processing activities described below, switch the toggles to off or use the “Reject all” button and confirm you want to save your choices.`
+            }, {
+              title: "Strictly Necessary",
+              description: "These cookies are essential for the proper functioning of the website and cannot be disabled.",
+              linkedCategory: "necessary"
+            }, {
+              title: "Performance and Analytics",
+              description: "These cookies collect information about how you use our website. All of the data is not anonymized and can be used to identify you.",
+              linkedCategory: "analytics"
+            }, {
+              title: "Targeting and Advertising",
+              description: "These cookies are used to make advertising messages more relevant to you and your interests. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.",
+              linkedCategory: "ads"
+            }, {
+              title: "More information",
+              description: 'For any queries in relation to my policy on cookies and your choices, please <a href="' + contactUrl + '">contact us</a>.'
+            }
+          ]
+        }
       }
     }
   }

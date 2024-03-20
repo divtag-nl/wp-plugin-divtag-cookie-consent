@@ -3,7 +3,7 @@
 * Plugin Name: Divtag Cookie Consent
 * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
 * Description: Cookie Consent by Divtag
-* Version: 1.5.2
+* Version: 2.0.0
 * Author: Divtag
 * Author URI: https://divtag.nl/
 **/
@@ -143,14 +143,6 @@ class DivtagCookieConsent {
     );
 
     add_settings_field(
-      'dark_mode', // id
-      'Donkere modus', // title
-      array( $this, 'dark_mode_callback' ), // callback
-      'divtag-cookie-consent-admin', // page
-      'divtag_cookie_consent_main_setting_section' // section
-    );
-
-    add_settings_field(
       'title_nl', // id
       'Titel - NL', // title
       array( $this, 'title_nl_callback' ), // callback
@@ -221,14 +213,6 @@ class DivtagCookieConsent {
 			'divtag_cookie_consent_consent_modal_section' // section
 		);
 
-    add_settings_field(
-			'transition', // id
-			'Transitie', // title
-			array( $this, 'transition_callback' ), // callback
-			'divtag-cookie-consent-admin', // page
-			'divtag_cookie_consent_consent_modal_section' // section
-		);
-
 		add_settings_field(
 			'swap_buttons', // id
 			'Draai knoppen om', // title
@@ -259,14 +243,6 @@ class DivtagCookieConsent {
 			'divtag-cookie-consent-admin', // page
 			'divtag_cookie_consent_settings_modal_section' // section
 		);
-
-    add_settings_field(
-			'transition_settings', // id
-			'Transitie', // title
-			array( $this, 'transition_settings_callback' ), // callback
-			'divtag-cookie-consent-admin', // page
-			'divtag_cookie_consent_settings_modal_section' // section
-		);
   }
 
   public function divtag_cookie_consent_sanitize($input) {
@@ -277,10 +253,6 @@ class DivtagCookieConsent {
 
     if ( isset( $input['force_consent'] ) ) {
       $sanitary_values['force_consent'] = $input['force_consent'];
-    }
-
-    if ( isset( $input['dark_mode'] ) ) {
-      $sanitary_values['dark_mode'] = $input['dark_mode'];
     }
 
     if ( isset( $input['title_nl'] ) ) {
@@ -315,10 +287,6 @@ class DivtagCookieConsent {
 			$sanitary_values['position_horizontal'] = $input['position_horizontal'];
 		}
 
-    if ( isset( $input['transition'] ) ) {
-			$sanitary_values['transition'] = $input['transition'];
-		}
-
 		if ( isset( $input['swap_buttons'] ) ) {
 			$sanitary_values['swap_buttons'] = $input['swap_buttons'];
 		}
@@ -329,10 +297,6 @@ class DivtagCookieConsent {
 
 		if ( isset( $input['position_horizontal_settings'] ) ) {
 			$sanitary_values['position_horizontal_settings'] = $input['position_horizontal_settings'];
-		}
-
-    if ( isset( $input['transition_settings'] ) ) {
-			$sanitary_values['transition_settings'] = $input['transition_settings'];
 		}
 
     return $sanitary_values;
@@ -353,13 +317,6 @@ class DivtagCookieConsent {
     printf(
       '<input type="checkbox" name="divtag_cookie_consent_option_name[force_consent]" id="force_consent" value="force_consent" %s> <label for="force_consent">Forceer de gebruiker de cookies te accepteren of weigeren</label>',
       ( isset( $this->divtag_cookie_consent_options['force_consent'] ) && $this->divtag_cookie_consent_options['force_consent'] === 'force_consent' ) ? 'checked' : ''
-    );
-  }
-
-  public function dark_mode_callback() {
-    printf(
-      '<input type="checkbox" name="divtag_cookie_consent_option_name[dark_mode]" id="dark_mode" value="dark_mode" %s> <label for="dark_mode">Weergeef de Cookie Consent in een donker thema</label>',
-      ( isset( $this->divtag_cookie_consent_options['dark_mode'] ) && $this->divtag_cookie_consent_options['dark_mode'] === 'dark_mode' ) ? 'checked' : ''
     );
   }
 
@@ -393,7 +350,7 @@ class DivtagCookieConsent {
 
   public function contact_url_callback() {
     printf(
-      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[contact_url]" id="contact_url" value="%s"><p class="description">Vul hier een adres in waar de gebruiker heen kan gaan om meer informatie te verkrijgen. Als dit leeg gelaten wordt, wordt het gevuld met het admin emailadres en mailto naar <b>' . get_option("admin_email") . '</b>.</p>',
+      '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[contact_url]" id="contact_url" value="%s"><p class="description">Vul hier een adres in waar de gebruiker heen kan gaan om meer informatie te verkrijgen. Als dit leeg gelaten wordt, wordt het gevuld met het emailadres <b>' . get_option("admin_email") . '</b>.</p>',
       isset( $this->divtag_cookie_consent_options['contact_url'] ) ? esc_attr( $this->divtag_cookie_consent_options['contact_url']) : ''
     );
   }
@@ -401,7 +358,7 @@ class DivtagCookieConsent {
   public function layout_callback() {
 		?> <select name="divtag_cookie_consent_option_name[layout]" id="layout">
 			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'cloud') ? 'selected' : '' ; ?>
-			<option value="cloud" <?php echo $selected; ?>>Cloud</option>
+			<option value="cloud inline" <?php echo $selected; ?>>Cloud</option>
 			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'box') ? 'selected' : '' ; ?>
 			<option value="box" <?php echo $selected; ?>>Box</option>
 			<?php $selected = (isset( $this->divtag_cookie_consent_options['layout'] ) && $this->divtag_cookie_consent_options['layout'] === 'bar') ? 'selected' : '' ; ?>
@@ -431,15 +388,6 @@ class DivtagCookieConsent {
 		</select> <?php
 	}
 
-  public function transition_callback() {
-		?> <select name="divtag_cookie_consent_option_name[transition]" id="transition">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transition'] ) && $this->divtag_cookie_consent_options['transition'] === 'slide') ? 'selected' : '' ; ?>
-			<option value="slide" <?php echo $selected; ?>> Slide</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transition'] ) && $this->divtag_cookie_consent_options['transition'] === 'zoom') ? 'selected' : '' ; ?>
-			<option value="zoom" <?php echo $selected; ?>> Zoom</option>
-		</select> <?php
-	}
-
 	public function swap_buttons_callback() {
 		printf(
 			'<input type="checkbox" name="divtag_cookie_consent_option_name[swap_buttons]" id="swap_buttons" value="swap_buttons" %s> <label for="swap_buttons">Draai de acceptatie en weiger knoppen om</label>',
@@ -465,15 +413,6 @@ class DivtagCookieConsent {
 		</select> <?php
 	}
 
-  public function transition_settings_callback() {
-		?> <select name="divtag_cookie_consent_option_name[transition_settings]" id="transition_settings">
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transition_settings'] ) && $this->divtag_cookie_consent_options['transition_settings'] === 'slide') ? 'selected' : '' ; ?>
-			<option value="slide" <?php echo $selected; ?>> Slide</option>
-			<?php $selected = (isset( $this->divtag_cookie_consent_options['transition_settings'] ) && $this->divtag_cookie_consent_options['transition_settings'] === 'zoom') ? 'selected' : '' ; ?>
-			<option value="zoom" <?php echo $selected; ?>> Zoom</option>
-		</select> <?php
-	}
-
   }
   if ( is_admin() )
   $divtag_cookie_consent = new DivtagCookieConsent();
@@ -483,7 +422,6 @@ class DivtagCookieConsent {
 * $divtag_cookie_consent_options = get_option( 'divtag_cookie_consent_option_name' ); // Array of All Options
 * $button_color = $divtag_cookie_consent_options['button_color']; // Knoppen kleur
 * $force_consent = $divtag_cookie_consent_options['force_consent']; // Forceer consent
-* $dark_mode = $divtag_cookie_consent_options['dark_mode']; // Donkere modus
 * $title_nl = $divtag_cookie_consent_options['title_nl']; // Titel - NL
 * $description_nl = $divtag_cookie_consent_options['description_nl']; // Uitleg - NL
 * $title_en = $divtag_cookie_consent_options['title_en']; // Titel - EN
@@ -493,10 +431,8 @@ class DivtagCookieConsent {
 * $position_vertical = $divtag_cookie_consent_options['position_vertical']; // Positie verticaal
 * $position_horizontal = $divtag_cookie_consent_options['position_horizontal']; // Positie horizontaal
 * $swap_buttons = $divtag_cookie_consent_options['swap_buttons']; // Draai knoppen om
-* $transition = $divtag_cookie_consent_options['transition']; // transition
 * $layout_settings = $divtag_cookie_consent_options['layout_settings']; // Layout settings
 * $position_horizontal_settings = $divtag_cookie_consent_options['position_horizontal_settings']; // Positie horizontaal settings
-* $transition_settings = $divtag_cookie_consent_options['transition_settings']; // transition settings
 */
 
 ?>

@@ -1,4 +1,3 @@
-import 'vanilla-cookieconsent/dist/cookieconsent.css';
-import './cookie-consent-client.css';
+import './css/cookieconsent.css';
 
 import './js/cookieconsent.js';

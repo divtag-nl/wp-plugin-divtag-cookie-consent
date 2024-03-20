@@ -10,8 +10,8 @@ export default defineConfig({
       output: {
         dir: 'dist',
         entryFileNames: 'js/cookie-consent-[name].js',
-        assetFileNames: 'css/[name].[ext]'
+        assetFileNames: 'css/cookie-consent-[name].[ext]'
       }
-    }
+    },
   }
 })
