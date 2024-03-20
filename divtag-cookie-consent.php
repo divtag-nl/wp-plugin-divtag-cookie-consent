@@ -19,9 +19,11 @@ $GLOBALS['packageInfo'] = json_decode(file_get_contents(plugin_dir_path( __FILE_
  */
 
 require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent',
-	__FILE__,
+	__FILE__, //Full path to the main plugin file or functions.php.
 	'wp-plugin-divtag-cookie-consent'
 );
 
