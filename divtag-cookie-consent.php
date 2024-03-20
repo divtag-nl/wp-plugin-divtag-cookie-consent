@@ -8,11 +8,7 @@
 * Author URI: https://divtag.nl/
 **/
 
-/**
- * Put package info in a global variable to call for example the version of the plugin package
- */
-
-$GLOBALS['packageInfo'] = json_decode(file_get_contents(plugin_dir_path( __FILE__ ) . 'package.json'));
+$GLOBALS['package_version'] = '2.0.2';
 
 /**
  * WP Plugin Update checker
@@ -36,8 +32,8 @@ $myUpdateChecker->setBranch('master');
  */
 
 function load_scripts() {
-  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-client.js', array(), $GLOBALS['packageInfo']->version, true);
-  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-client.css?ver=' . $GLOBALS['packageInfo']->version, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-client.js', array(), $GLOBALS['package_version'], true);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-client.css?ver=' . $GLOBALS['package_version'], false, null);
 
   wp_localize_script('cookie-consent-js', 'cookie_consent_settings',
     array(
@@ -56,8 +52,8 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_admin_scripts() {
-  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-admin.js?ver=' . $GLOBALS['packageInfo']->version, array(), null);
-  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-admin.css?ver=' . $GLOBALS['packageInfo']->version, false, null);
+  wp_enqueue_script('cookie-consent-js', plugin_dir_url( __FILE__ ) . 'dist/js/cookie-consent-admin.js?ver=' . $GLOBALS['package_version'], array(), null);
+  wp_register_style('cookie-consent-css', plugin_dir_url( __FILE__ ) . 'dist/css/cookie-consent-admin.css?ver=' . $GLOBALS['package_version'], false, null);
   
   wp_enqueue_style('cookie-consent-css');
 }

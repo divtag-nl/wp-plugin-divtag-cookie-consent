@@ -16,7 +16,7 @@ Alle bestanden van deze repo in de map **wp-content/plugins/divtag-cookie-consen
 Bij het toevoegen van velden voor de instellingen, is [wordpress-option-page-generator](https://jeremyhixon.com/tool/wordpress-option-page-generator/) een handige generator.
 
 ### Nieuwe versie releasen
-Als een nieuwe release klaar is, voer `yarn build` uit om alle gegenereerde javascript en css te minificeren. Update het versienummer in `package.json`, `readme.txt` en `divtag-cookie-consent.php`. Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer zoals in eerder benoemde bestanden is toegepast.
+Als een nieuwe release klaar is, voer `yarn build` uit om alle gegenereerde javascript en css te minificeren. Update het versienummer in `package.json`, `readme.txt` en `divtag-cookie-consent.php`(2x, zie comment en package_version). Na het committen en pushen van de update, tag de laatste commit met hetzelfde versienummer zoals in eerder benoemde bestanden is toegepast.
 
 [YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker) wordt gebruikt om te kijken of er updates zijn van de plugin in andere WordPress installaties.
 
