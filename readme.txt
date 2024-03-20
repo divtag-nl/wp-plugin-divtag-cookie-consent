@@ -2,7 +2,7 @@
 Tags: cookies
 Requires at least: 4.0
 Tested up to: 6.4.3
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,9 +17,11 @@ Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-coo
 
 == Changelog ==
 
+= 2.0.1 =
+* Styling fix.
+
 = 2.0.0 =
 * Package updates.
-* 
 
 = 1.5.2 =
 * Fix ingestelde kleur van knop bij het hoveren.

@@ -3,11 +3,11 @@
 ## Externe plugins
 
 ### Frontend
-- [orestbida/cookieconsent - v2.8.5](https://github.com/orestbida/cookieconsent/releases/tag/v2.8.5)
-- [YahnisElsts/plugin-update-checker - v4.12](https://github.com/YahnisElsts/plugin-update-checker/releases/tag/v4.12)
+- [orestbida/cookieconsent - v3.0.0](https://github.com/orestbida/cookieconsent/releases/tag/v3.0.0)
 
 ### Admin
-- [mdbassit/Coloris - v0.15.0](https://github.com/mdbassit/Coloris/releases/tag/v0.15.0)
+- [YahnisElsts/plugin-update-checker - v5.4](https://github.com/YahnisElsts/plugin-update-checker/releases/tag/v5.4)
+- [mdbassit/Coloris - v0.23.0](https://github.com/mdbassit/Coloris/releases/tag/v0.23.0)
 
 ## Development
 Alle bestanden van deze repo in de map **wp-content/plugins/divtag-cookie-consent** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn watch` uit om alle bestanden in de `/src` map naar wens aan te passen.
@@ -25,21 +25,22 @@ Download de plugin en plaats alle bestanden in een aangemaakte map genaamd `divt
 
 ### Blokkeren van externe scripts
 Huidige categorieën die te blokkeren zijn:
-- `marketing`
+- `analytics`
+- `ads`
 
 Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden als deze instelling is gekozen het volgende gebeuren:
 
-Om bijvoorbeeld `marketing` cookies te blokkeren, moet het `<script>` tag `type="text/plain"` krijgen en voeg `data-cookiecategory="marketing"` toe:
+Om bijvoorbeeld `analytics` cookies te blokkeren, moet het `<script>` tag `type="text/plain"` krijgen en voeg `data-category="analytics"` toe:
 
 ```js
-<script type="text/plain" data-cookiecategory="marketing" src="./assets/js/my_custom_script.js" defer></script>
+<script type="text/plain" data-category="analytics" data-service="Google Analytics"></script>
 ```
 
 ### Cookie instellingen modal tonen
 Voeg een `<button>` toe waar gewenst zoals onderstaand voorbeeld om de cookie instellingen te tonen:
 
 ```html
-<button type="button" data-cc="c-settings">Cookie voorkeuren</button>
+<button type="button" data-cc="show-preferencesModal">Cookie voorkeuren</button>
 ```
 
 Zie [orestbida/cookieconsent](https://github.com/orestbida/cookieconsent) voor eventuele geupdate documentatie.

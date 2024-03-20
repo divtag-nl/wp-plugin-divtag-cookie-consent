@@ -1,1 +1,5 @@
 @import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
+#cc-main .cm__texts {
+  padding: 1.5rem 0 0;
+}
