@@ -79,6 +79,7 @@ CookieConsent.run({
       readOnly: true
     },
     analytics: {
+      enabled: true,
       services: {
         'Google Analytics': {
           label: "Google Analytics",
@@ -86,6 +87,7 @@ CookieConsent.run({
       }
     },
     ads: {
+      enabled: true,
       services: {
         'Google Ads': {
           label: "Google Ads",
