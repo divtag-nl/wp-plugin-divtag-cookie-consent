@@ -3,11 +3,11 @@
 ## Externe plugins
 
 ### Frontend
-- [orestbida/cookieconsent - v3.0.0](https://github.com/orestbida/cookieconsent/releases/tag/v3.0.0)
+- [orestbida/cookieconsent - v3.1.0](https://github.com/orestbida/cookieconsent/releases/tag/v3.1.0)
 
 ### Admin
 - [YahnisElsts/plugin-update-checker - v5.4](https://github.com/YahnisElsts/plugin-update-checker/releases/tag/v5.4)
-- [mdbassit/Coloris - v0.23.0](https://github.com/mdbassit/Coloris/releases/tag/v0.23.0)
+- [mdbassit/Coloris - v0.25.0](https://github.com/mdbassit/Coloris/releases/tag/v0.25.0)
 
 ## Development
 Alle bestanden van deze repo in de map **wp-content/plugins/divtag-cookie-consent** clonen, voer `yarn install` uit in de map van de plugin, voer vervolgens `yarn watch` uit om alle bestanden in de `/src` map naar wens aan te passen.
@@ -25,8 +25,10 @@ Download de plugin en plaats alle bestanden in een aangemaakte map genaamd `divt
 
 ### Blokkeren van externe scripts
 Huidige categorieën die te blokkeren zijn:
+- `advertisement`
 - `analytics`
-- `ads`
+- `functionality`
+- `security`
 
 Om externe scripts te blokkeren moet bij het script dat geblokkeerd moet worden als deze instelling is gekozen het volgende gebeuren:
 
