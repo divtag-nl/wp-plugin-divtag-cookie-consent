@@ -3,12 +3,12 @@
  * Plugin Name: Divtag Cookie Consent
  * Plugin URI: https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent
  * Description: Cookie Consent by Divtag
- * Version: 2.1.0
+ * Version: 2.2.0
  * Author: Divtag
  * Author URI: https://divtag.nl/
  **/
 
-$GLOBALS['package_version'] = '2.1.0';
+$GLOBALS['package_version'] = '2.2.0';
 
 /**
  * WP Plugin Update checker
@@ -458,6 +458,33 @@ class DivtagCookieConsent
 if (is_admin()) {
   $divtag_cookie_consent = new DivtagCookieConsent();
 }
+
+function divtag_add_gtm_script() {
+  if ( is_admin() ) {
+    return;
+  }
+
+  $options = get_option( 'divtag_cookie_consent_option_name' );
+
+  if ( isset( $options['google_tag_manager_code'] ) && ! empty( $options['google_tag_manager_code'] ) ) {
+    $gtm_code = $options['google_tag_manager_code'];
+
+    // Add GTM script to <head>
+    add_action( 'wp_head', function () use ( $gtm_code ) {
+      ?>
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','<?php echo esc_js( $gtm_code ); ?>');</script>
+      <?php
+    } );
+  }
+}
+
+add_action( 'init', 'divtag_add_gtm_script' );
+
 
 /*
 * Retrieve this value with:
