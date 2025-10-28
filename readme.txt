@@ -1,12 +1,12 @@
 === Divtag Cookie Consent ===
 Tags: cookies
 Requires at least: 4.0
-Tested up to: 6.8.2
-Stable tag: 2.1.0
+Tested up to: 6.8.3
+Stable tag: 2.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
- 
+
 Divtag Cookie Consent WordPress Plugin
 
 == Description ==
@@ -16,6 +16,9 @@ Wanneer de plugin geïnstalleerd en geactiveerd is, komt er links in het menu bo
 Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-cookie-consent) voor meer informatie.
 
 == Changelog ==
+
+= 2.2.0 =
+* Add Google Consent mode support and Google Tag Manager code field.
 
 = 2.1.0 =
 * Update vanilla-cookieconsent package naar v3.1.0
@@ -73,6 +76,9 @@ Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-coo
 * Eerste release.
 
 == Upgrade Notice ==
+
+= 2.3.0 =
+De Google Consent mode is nu aan de plugin toegevoegd. Dus als je de consent mode al handmatig aan je website hebt toegevoegd, verwijder deze dan om conflicten te voorkomen.
 
 = 2.0.0 =
 De cookie consent package heeft een major upgrade gekregen, waardoor bestaande instellingen verloren kunnen gaan.
