@@ -77,7 +77,7 @@ Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-coo
 
 == Upgrade Notice ==
 
-= 2.3.0 =
+= 2.2.0 =
 De Google Consent mode is nu aan de plugin toegevoegd. Dus als je de consent mode al handmatig aan je website hebt toegevoegd, verwijder deze dan om conflicten te voorkomen.
 
 = 2.0.0 =
