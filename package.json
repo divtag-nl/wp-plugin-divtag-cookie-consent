@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "dev": "vite build --watch",
     "watch": "vite build --watch"
   },
   "dependencies": {
