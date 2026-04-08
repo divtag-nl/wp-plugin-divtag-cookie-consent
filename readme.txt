@@ -17,6 +17,9 @@ Ga naar de [Plugin-homepagina](https://github.com/divtag-nl/wp-plugin-divtag-coo
 
 == Changelog ==
 
+= 2.2.2 =
+* Update vite opnieuw om een vulnerability waarschuwing op te lossen.
+
 = 2.2.1 =
 * Update vite om een vulnerability waarschuwing op te lossen.
 
