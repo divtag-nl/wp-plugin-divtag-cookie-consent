@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         admin: 'src/admin/cookie-consent-admin.js',
         client: 'src/client/cookie-consent-client.js',
