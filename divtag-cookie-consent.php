@@ -188,6 +188,14 @@ class DivtagCookieConsent
       'divtag_cookie_consent_main_setting_section' // section
     );
 
+    add_settings_field(
+      'google_preferred_sources', // id
+      'Google Preferred Sources', // title
+      [$this, 'google_preferred_sources_callback'], // callback
+      'divtag-cookie-consent-admin', // page
+      'divtag_cookie_consent_main_setting_section' // section
+    );
+
     add_settings_section(
       'divtag_cookie_consent_consent_modal_section', // id
       'Consent Modal', // title
@@ -290,6 +298,10 @@ class DivtagCookieConsent
       $sanitary_values['contact_url'] = sanitize_text_field($input['contact_url']);
     }
 
+    if (isset($input['google_preferred_sources'])) {
+      $sanitary_values['google_preferred_sources'] = $input['google_preferred_sources'];
+    }
+
     if (isset($input['layout'])) {
       $sanitary_values['layout'] = $input['layout'];
     }
@@ -379,6 +391,14 @@ class DivtagCookieConsent
     printf(
       '<input class="regular-text" type="text" name="divtag_cookie_consent_option_name[contact_url]" id="contact_url" value="%s"><p class="description">Vul hier een adres in waar de gebruiker heen kan gaan om meer informatie te verkrijgen. Als dit leeg gelaten wordt, wordt het gevuld met het emailadres <b>' . get_option("admin_email") . '</b>.</p>',
       isset($this->divtag_cookie_consent_options['contact_url']) ? esc_attr($this->divtag_cookie_consent_options['contact_url']) : ''
+    );
+  }
+
+  public function google_preferred_sources_callback()
+  {
+    printf(
+      '<input type="checkbox" name="divtag_cookie_consent_option_name[google_preferred_sources]" id="google_preferred_sources" value="google_preferred_sources" %s> <label for="google_preferred_sources">Voeg de Google Preferred Sources service toe aan de strikt noodzakelijke cookies</label>',
+      (isset($this->divtag_cookie_consent_options['google_preferred_sources']) && $this->divtag_cookie_consent_options['google_preferred_sources'] === 'google_preferred_sources') ? 'checked' : ''
     );
   }
 
@@ -496,6 +516,7 @@ add_action( 'init', 'divtag_add_gtm_script' );
 * $title_en = $divtag_cookie_consent_options['title_en']; // Titel - EN
 * $description_en = $divtag_cookie_consent_options['description_en']; // Uitleg - EN
 * $contact_url = $divtag_cookie_consent_options['contact_url']; // Contact URL
+* $google_preferred_sources = $divtag_cookie_consent_options['google_preferred_sources']; // Google Preferred Sources
 * $layout = $divtag_cookie_consent_options['layout']; // Layout
 * $position_vertical = $divtag_cookie_consent_options['position_vertical']; // Positie verticaal
 * $position_horizontal = $divtag_cookie_consent_options['position_horizontal']; // Positie horizontaal

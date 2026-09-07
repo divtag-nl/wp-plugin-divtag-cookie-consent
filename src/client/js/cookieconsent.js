@@ -93,6 +93,16 @@ function updateGtagConsent() {
   });
 }
 
+// Services under the necessary category; Google Preferred Sources is optional (admin toggle)
+const necessaryServices = {};
+
+if (get_options.google_preferred_sources) {
+  // User-initiated Google flow (preferred sources); only loads its iframe on explicit click
+  necessaryServices['Google Preferred Sources'] = {
+    label: 'Google Preferred Sources',
+  };
+}
+
 CookieConsent.run({
   cookie: {
     name: 'cc_cookie_v2',
@@ -131,6 +141,7 @@ CookieConsent.run({
     [CAT_NECESSARY]: {
       enabled: true,  // this category is enabled by default
       readOnly: true,  // this category cannot be disabled
+      services: necessaryServices,
     },
     [CAT_ANALYTICS]: {
       autoClear: {
